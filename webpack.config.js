@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const THEME_NAME = 'openfinance'
+const THEME_NAME = 'trackingly'
 const entries = [
   'login',
   'register',
@@ -32,7 +32,7 @@ module.exports = (env, argv) => {
       return entryList
     },
     output: {
-      path: path.resolve(__dirname, '..', 'themes', THEME_NAME, 'login'),
+      path: path.resolve(__dirname, 'output', THEME_NAME, 'login'),
       filename: 'resources/js/[name].js',
       publicPath: '/'
     },
