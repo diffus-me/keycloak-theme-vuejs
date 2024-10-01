@@ -1,102 +1,204 @@
 <template>
   <layout>
-    <h3 class="title">{{ titles.loginAccountTitle }}</h3>
-    <div v-if="message.sumary" :class="`alert-${message.type}`">
+    <v-container class="form-header-container">
+      <div class="form-header-logo">
+        <v-img
+          height="60"
+          :src="getLogo('trackingly')"
+        ></v-img>
+      </div>
+      <h2 class="text-secondary form-header-title">Hi, Welcome Back</h2>
+      <h4 class="text-disabled form-header-subtitle">
+        {{ titles.loginAccountTitle }}
+      </h4>
+    </v-container>
+    <v-container v-if="social.length" class="ma-0 px-0 pt-5 pb-5">
+      <v-btn
+        v-for="item in social"
+        :key="item.alias"
+        block
+        color="primary"
+        variant="outlined"
+        class="text-lightText mt-3 form-social-btn"
+        @click="redirectTo(getUrl(item.loginUrl))"
+      >
+        <img :src="getIcon(item.alias)" :alt="item.displayName" style="height: 22px; width: 22px;" />
+        <span class="ml-2">Sign in with {{ item.displayName }}</span></v-btn
+      >
+    </v-container>
+    <v-row v-if="social.length">
+      <v-col class="d-flex align-center">
+        <v-divider class="custom-devider" />
+        <v-btn variant="outlined" class="orbtn" rounded="md" size="small" readonly
+          >OR</v-btn
+        >
+        <v-divider class="custom-devider" />
+      </v-col>
+    </v-row>
+    <h5 v-if="social.length" class="form-sign-title-hint text-center my-4 mb-8">
+      Sign in with Email address
+    </h5>
+    <!--<div v-if="message.sumary" :class="`alert-${message.type}`">
       <span v-html="getIcon(message.type)"></span>
       <span>{{ message.sumary }}</span>
-    </div>
-    <form :action="getUrl(urls.loginAction)" method="post">
-      <div
-        :class="
-          validations.usernameOrPassword ? 'form-group error' : 'form-group'
-        "
+    </div>-->
+    <Form
+      :validation-schema="schema"
+      :action="getUrl(urls.loginAction)"
+      method="post"
+      class="mt-7 login-form"
+      v-slot="{ isSubmitting }"
+    >
+      <text-input
+        name="username"
+        type="text"
+        :label="getUsernameLabel()"
+        class="mt-4 mb-8"
+        required
+        :value="forms.loginUsername"
       >
-        <label for="username">{{ getUsernameLabel() }}</label>
-        <input
-          tabindex="1"
-          name="username"
-          :value="forms.loginUsername"
-          type="text"
-        />
-        <span>{{ validations.usernameOrPassword }}</span>
-      </div>
-      <div
-        :class="
-          validations.usernameOrPassword ? 'form-group error' : 'form-group'
-        "
+      </text-input>
+      <text-input
+        name="password"
+        type="password"
+        :label="labels.password"
+        class="pwdInput"
+        required
+        enable-pwd-text-toggle
       >
-        <label for="password">{{ labels.password }}</label>
-        <input
-          tabindex="2"
-          name="password"
-          type="password"
-          autocomplete="off"
-        />
-      </div>
+      </text-input>
 
-      <div
-        v-if="permissions.rememberMe && !permissions.usernameEditDisabled"
-        class="checkbox"
-      >
-        <label>
-          <input
-            tabindex="3"
-            name="rememberMe"
-            type="checkbox"
-            :checked="forms.loginRememberMe"
-          />
-          {{ labels.rememberMe }}
-        </label>
-        <span v-if="permissions.resetPasswordAllowed">
+      <div class="d-sm-flex align-center mt-2 mb-7 mb-sm-0">
+        <v-checkbox
+          v-if="permissions.rememberMe && !permissions.usernameEditDisabled"
+          v-model="rememberMe"
+          name="rememberMe"
+          label="Remember me?"
+          color="primary"
+          class="ms-n2"
+          hide-details
+        ></v-checkbox>
+        <div v-if="permissions.resetPasswordAllowed" class="ml-auto">
           <a
-            tabindex="4"
             :href="getUrl(urls.loginResetCredentials)"
-            class="forgot-password"
-            >{{ labels.doForgotPassword }}</a
+            class="text-primary text-decoration-none"
+            >Forgot password?</a
           >
-        </span>
+        </div>
       </div>
       <input
         type="hidden"
         name="credentialId"
         :value="forms.selectedCredential"
+        style="display: none"
       />
-      <button tabindex="5" type="submit">{{ labels.doLogIn }}</button>
-    </form>
+      <v-btn
+        color="secondary"
+        :loading="isSubmitting"
+        block
+        class="mt-2"
+        variant="flat"
+        size="large"
+        type="submit"
+      >
+        {{ labels.doLogIn }}</v-btn
+      >
+      <div v-if="message.sumary" class="mt-2">
+        <v-alert color="error">{{ message.sumary }}</v-alert>
+      </div>
+    </Form>
     <div
-      class="register"
       v-if="
         permissions.password &&
         permissions.registrationAllowed &&
         !permissions.registrationDisabled
       "
+      class="mt-5 text-right"
     >
-      <span>{{ labels.noAccount }}</span>
-      <a :href="getUrl(urls.registration)">{{ labels.doRegister }}</a>
-    </div>
-    <div v-if="social.length" class="social">
-      <a v-for="item in social" :key="item.alias" :href="getUrl(item.loginUrl)">
-        <span v-html="getIcon(item.alias)"></span>
-        <span>{{ item.displayName }}</span>
-      </a>
+      <v-divider />
+      <v-btn
+        variant="plain"
+        class="mt-2 text-capitalize mr-n2"
+        @click="redirectTo(getUrl(urls.registration))"
+        >{{ labels.noAccount }} {{ labels.doRegister }}</v-btn
+      >
     </div>
   </layout>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Layout from '~/components/Layout.vue'
+import TextInput from '~/components/TextInput.vue'
 import { useLogin } from '~/hooks'
+import { ref } from 'vue'
+import { Form } from 'vee-validate'
+import * as Yup from 'yup'
 
 export default defineComponent({
   name: 'Login',
   components: {
-    Layout
+    Layout,
+    Form,
+    TextInput
   },
   setup() {
-    return useLogin()
+    const defaultValues = useLogin()
+    const redirectTo = (url: string) => {
+      window.location.href = url;
+    }
+
+    return {
+      ...defaultValues,
+      show1: ref(false),
+      schema: Yup.object().shape({
+        username: Yup.string().email().required(),
+        password: Yup.string().min(8).required()
+      }),
+      rememberMe: ref(false || defaultValues.forms.value.loginRememberMe),
+      redirectTo,
+
+    }
   },
   mounted() {
-    console.log('Login')
   }
 })
 </script>
+<style lang="scss">
+.form-header-logo {
+  height: 36px;
+  max-height: 36px;
+}
+.form-header-title {
+  font-size: 1.5rem !important;
+  font-weight: 700;
+  line-height: 2.5rem;
+  letter-spacing: -0.0083333333em !important;
+  font-family: inherit;
+  text-transform: none !important;
+}
+.form-header-subtitle {
+  font-size: 1rem !important;
+  font-weight: 600;
+  line-height: 1.5rem;
+  letter-spacing: 0.0073529412em !important;
+  font-family: inherit;
+  text-transform: none !important;
+}
+.form-social-btn {
+  border-color: #0000001f !important;
+}
+.orbtn {
+  padding: 2px 40px !important;
+  border-color: #0000001f !important;
+  margin: 20px 15px;
+  border-radius: 12px !important;
+}
+.form-sign-title-hint {
+  font-size: 0.875rem !important;
+  font-weight: 500;
+  line-height: 1.2rem;
+  letter-spacing: normal !important;
+  font-family: inherit;
+  text-transform: none !important;
+}
+</style>

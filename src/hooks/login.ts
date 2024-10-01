@@ -30,9 +30,31 @@ export const useLogin = () => {
       return '<i class="fas fa-check-circle"></i>'
     }
     if (type === 'github') {
-      return '<i class="fab fa-github"></i>'
+      return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/social/logos/github-logo-icon.svg'
+    }
+    if (type === 'google') {
+      return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/social/logos/google-logo-icon.svg'
+    }
+    if (type === 'microsoft') {
+      return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/social/logos/microsoft-logo-icon.svg'
+    }
+    if (type === 'apple') {
+      return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/social/logos/apple-logo-icon.svg'
+    }
+    if (type === 'facebook') {
+      return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/social/logos/facebook-logo-icon.svg'
+    }
+    if (type === 'twitter') {
+      return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/social/logos/twitter-logo-icon.svg'
     }
     return '<i></i>'
+  }
+
+  const getLogo = (type: string | undefined) => {
+    if (type === 'trackingly') {
+      return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/logos/trackingly_logo_pth.svg';
+    }
+    return '';
   }
 
   const getSumary = (message: string) => {
@@ -53,6 +75,7 @@ export const useLogin = () => {
     getUrl,
     getUsernameLabel,
     getIcon,
+    getLogo,
     getSumary
   }
 }

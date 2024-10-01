@@ -109,7 +109,7 @@ module.exports = (env, argv) => {
         patterns: [
           {
             from: path.resolve(__dirname, 'src', 'static'),
-            to: path.resolve(__dirname, '..', 'themes', THEME_NAME, 'login')
+            to: path.resolve(__dirname, 'output', THEME_NAME, 'login')
           }
         ]
       })
