@@ -81,4 +81,7 @@ export default defineComponent({
   background: $main-background;
   background-size: cover;
 }
+.ps {
+  width: 100%;
+}
 </style>
