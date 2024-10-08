@@ -4,6 +4,9 @@ export const useLogin = () => {
   const env = inject('environment') as Environment
 
   const getUrl = (url: string) => {
+    if (url === "terms_and_conditions") {
+      return "https://www.trackingly.ai/terms/";
+    }
     return url.replace(/(&amp;)/g, '&')
   }
   const getUsernameLabel = () => {

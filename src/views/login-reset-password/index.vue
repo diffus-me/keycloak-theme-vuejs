@@ -1,47 +1,87 @@
 <template>
   <layout>
-    <h3 class="title">{{ titles.emailForgotTitle }}</h3>
-    <div v-if="message.sumary" :class="`alert-${message.type}`">
-      <span v-html="getIcon(message.type)"></span>
-      <span>{{ message.sumary }}</span>
-    </div>
-    <form :action="getUrl(urls.loginAction)" method="post">
-      <div
-        :class="
-          validations.usernameOrPassword ? 'form-group error' : 'form-group'
-        "
-      >
-        <label for="username">{{ getUsernameLabel() }}</label>
-        <input
-          tabindex="1"
-          name="username"
-          :value="forms.loginUsername"
-          type="text"
-        />
-        <span>{{ validations.usernameOrPassword }}</span>
+    <v-container class="form-header-container">
+      <div class="form-header-logo">
+        <v-img height="60" :src="getLogo('trackingly')"></v-img>
       </div>
-      <button tabindex="4" type="submit">{{ labels.doSubmit }}</button>
-    </form>
-    <div class="login">
-      <a :href="getUrl(urls.login)">{{ labels.backToLogin }}</a>
+      <h2 class="text-secondary form-header-title">
+        {{ titles.emailForgotTitle }}
+      </h2>
+      <h4 class="text-disabled form-header-subtitle">
+        Enter your email address below and we'll send you password reset
+        instructions.
+      </h4>
+    </v-container>
+    <Form
+      :validation-schema="schema"
+      :action="getUrl(urls.loginAction)"
+      method="post"
+      class="mt-7 signup-form"
+      v-slot="{ isSubmitting }"
+    >
+      <text-input
+        name="username"
+        type="text"
+        :label="getUsernameLabel()"
+        class="mt-4 mb-4"
+        required
+        :value="forms.loginUsername"
+      >
+      </text-input>
+      <v-btn
+        color="secondary"
+        :loading="isSubmitting"
+        block
+        class="mt-2"
+        variant="flat"
+        size="large"
+        type="submit"
+      >
+        {{ labels.doSubmit }}</v-btn
+      >
+      <div v-if="message.sumary" class="mt-2">
+        <v-alert :color="message.type">{{ message.sumary }}</v-alert>
+      </div>
+    </Form>
+    <div class="mt-5 text-right">
+      <v-divider />
+      <v-btn
+        variant="plain"
+        class="mt-2 text-capitalize mr-n2"
+        @click="redirectTo(getUrl(urls.login))"
+        >{{ labels.backToLogin }}</v-btn
+      >
     </div>
   </layout>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Layout from '~/components/Layout.vue'
+import TextInput from '~/components/TextInput.vue'
 import { useLogin } from '~/hooks'
+import { Form } from 'vee-validate'
+import * as Yup from 'yup'
 
 export default defineComponent({
   name: 'ResetPassword',
   components: {
-    Layout
+    Layout,
+    Form,
+    TextInput
   },
   setup() {
-    return useLogin()
+    const redirectTo = (url: string) => {
+      window.location.href = url
+    }
+    return {
+      ...useLogin(),
+      schema: Yup.object().shape({
+        username: Yup.string().email().required()
+      }),
+      redirectTo
+    }
   },
   mounted() {
-    console.log('ResetPassword')
   }
 })
 </script>

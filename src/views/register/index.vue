@@ -127,7 +127,7 @@
           class="ms-n2"
           hide-details
         ></v-checkbox>
-        <a href="#" class="ml-1 text-lightText">Terms and Condition</a>
+        <a :href="getUrl('terms_and_conditions')" class="ml-1 text-lightText">Terms and Condition</a>
       </div>
       <v-btn
         color="secondary"
