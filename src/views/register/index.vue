@@ -127,7 +127,9 @@
           class="ms-n2"
           hide-details
         ></v-checkbox>
-        <a :href="getUrl('terms_and_conditions')" class="ml-1 text-lightText">Terms and Condition</a>
+        <a :href="getUrl('terms_and_conditions')" class="ml-1 text-lightText"
+          >Terms and Condition</a
+        >
       </div>
       <v-btn
         color="secondary"
@@ -141,7 +143,7 @@
         {{ labels.doRegister }}</v-btn
       >
       <div v-if="message.sumary" class="mt-2">
-        <v-alert :color="message.type">{{ message.sumary }}</v-alert>
+        <v-alert :type="message.type" :text="message.sumary" closable variant="tonal" />
       </div>
     </Form>
     <div class="mt-5 text-right">

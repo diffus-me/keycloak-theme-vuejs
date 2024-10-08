@@ -7,7 +7,7 @@
       <h2 class="text-secondary form-header-title">
         {{ titles.emailForgotTitle }}
       </h2>
-      <h4 class="text-disabled form-header-subtitle">
+      <h4 class="text-disabled form-header-subtitle font-weight-regular">
         Enter your email address below and we'll send you password reset
         instructions.
       </h4>
@@ -23,7 +23,7 @@
         name="username"
         type="text"
         :label="getUsernameLabel()"
-        class="mt-4 mb-4"
+        class="mt-4 mb-8"
         required
         :value="forms.loginUsername"
       >
@@ -40,7 +40,7 @@
         {{ labels.doSubmit }}</v-btn
       >
       <div v-if="message.sumary" class="mt-2">
-        <v-alert :color="message.type">{{ message.sumary }}</v-alert>
+        <v-alert :type="message.type" :text="message.sumary" closable variant="tonal" />
       </div>
     </Form>
     <div class="mt-5 text-right">
@@ -81,7 +81,6 @@ export default defineComponent({
       redirectTo
     }
   },
-  mounted() {
-  }
+  mounted() {}
 })
 </script>

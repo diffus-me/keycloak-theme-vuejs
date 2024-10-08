@@ -2,10 +2,7 @@
   <layout>
     <v-container class="form-header-container">
       <div class="form-header-logo">
-        <v-img
-          height="60"
-          :src="getLogo('trackingly')"
-        ></v-img>
+        <v-img height="60" :src="getLogo('trackingly')"></v-img>
       </div>
       <h2 class="text-secondary form-header-title">Hi, Welcome Back</h2>
       <h4 class="text-disabled form-header-subtitle">
@@ -22,14 +19,23 @@
         class="text-lightText mt-3 form-social-btn"
         @click="redirectTo(getUrl(item.loginUrl))"
       >
-        <img :src="getIcon(item.alias)" :alt="item.displayName" style="height: 22px; width: 22px;" />
+        <img
+          :src="getIcon(item.alias)"
+          :alt="item.displayName"
+          style="height: 22px; width: 22px"
+        />
         <span class="ml-2">Sign in with {{ item.displayName }}</span></v-btn
       >
     </v-container>
     <v-row v-if="social.length">
       <v-col class="d-flex align-center">
         <v-divider class="custom-devider" />
-        <v-btn variant="outlined" class="orbtn" rounded="md" size="small" readonly
+        <v-btn
+          variant="outlined"
+          class="orbtn"
+          rounded="md"
+          size="small"
+          readonly
           >OR</v-btn
         >
         <v-divider class="custom-devider" />
@@ -104,7 +110,7 @@
         {{ labels.doLogIn }}</v-btn
       >
       <div v-if="message.sumary" class="mt-2">
-        <v-alert :color="message.type">{{ message.sumary }}</v-alert>
+        <v-alert :type="message.type" :text="message.sumary" closable variant="tonal" />
       </div>
     </Form>
     <div
@@ -144,7 +150,7 @@ export default defineComponent({
   setup() {
     const defaultValues = useLogin()
     const redirectTo = (url: string) => {
-      window.location.href = url;
+      window.location.href = url
     }
 
     return {
@@ -154,10 +160,9 @@ export default defineComponent({
         password: Yup.string().min(8).required()
       }),
       rememberMe: ref(false || defaultValues.forms.value.loginRememberMe),
-      redirectTo,
+      redirectTo
     }
   },
-  mounted() {
-  }
+  mounted() {}
 })
 </script>
