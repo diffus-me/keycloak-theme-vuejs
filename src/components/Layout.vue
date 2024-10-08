@@ -8,7 +8,7 @@
       class="d-flex align-center"
       style="background-color: #eef2f6 !important"
     >
-      <PerfectScrollbar>
+      <PerfectScrollbar class="d-flex align-center">
         <v-container>
           <div class="pa-0 pa-sm-12">
             <v-row justify="center">
@@ -83,5 +83,6 @@ export default defineComponent({
 }
 .ps {
   width: 100%;
+  height: 100vh;
 }
 </style>
