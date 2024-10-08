@@ -65,7 +65,7 @@ export default defineComponent({
   border-width: 0 !important;
 }
 .bgpattern {
-  background: url('https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/background/login/trackingly_login_background.jpg');
+  background: $main-background;
   background-size: cover;
 }
 </style>

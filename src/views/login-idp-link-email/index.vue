@@ -1,23 +1,34 @@
 <template>
   <layout>
-    <h3 class="title">{{ titles.emailLinkIdpTitle }}</h3>
-    <div v-if="message.sumary" :class="`alert-${message.type}`">
-      <span v-html="getIcon(message.type)"></span>
-      <span>{{ getSumary(message.sumary) }}</span>
+    <v-container class="form-header-container">
+      <div class="form-header-logo">
+        <v-img height="36" :src="getLogo('main-logo')"></v-img>
+      </div>
+      <h2 class="text-secondary form-header-title">
+        {{ titles.emailLinkIdpTitle }}
+      </h2>
+      <p class="text-disabled font-weight-regular">
+        {{ instruction.emailLinkIdp1 }}
+      </p>
+      <p class="text-disabled font-weight-regular">
+        {{ instruction.emailLinkIdp2 }}
+        <a :href="getUrl(urls.loginAction)">{{ labels.doClickHere }}</a>
+        {{ instruction.emailLinkIdp3 }}
+      </p>
+      <p class="text-disabled font-weight-regular">
+        {{ instruction.emailLinkIdp4 }}
+        <a :href="getUrl(urls.loginAction)">{{ labels.doClickHere }}</a>
+        {{ instruction.emailLinkIdp5 }}
+      </p>
+    </v-container>
+    <div v-if="message.sumary" class="mt-2">
+      <v-alert
+        :type="message.type"
+        :text="message.sumary"
+        closable
+        variant="tonal"
+      />
     </div>
-    <p class="instruction">
-      {{ instruction.emailLinkIdp1 }}
-    </p>
-    <p class="instruction">
-      {{ instruction.emailLinkIdp2 }}
-      <a :href="getUrl(urls.loginAction)">{{ labels.doClickHere }}</a>
-      {{ instruction.emailLinkIdp3 }}
-    </p>
-    <p class="instruction">
-      {{ instruction.emailLinkIdp4 }}
-      <a :href="getUrl(urls.loginAction)">{{ labels.doClickHere }}</a>
-      {{ instruction.emailLinkIdp5 }}
-    </p>
   </layout>
 </template>
 <script lang="ts">

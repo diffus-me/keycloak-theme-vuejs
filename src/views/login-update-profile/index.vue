@@ -1,81 +1,123 @@
 <template>
   <layout>
-    <h3 class="title">{{ titles.loginProfileTitle }}</h3>
-    <div v-if="message.sumary" :class="`alert-${message.type}`">
-      <span v-html="getIcon(message.type)"></span>
-      <span>{{ message.sumary }}</span>
-    </div>
-    <form :action="getUrl(urls.loginAction)" method="post">
-      <div class="row">
-        <div :class="validations.firstName ? 'form-group error' : 'form-group'">
-          <label for="firstName">{{ labels.firstName }}</label>
-          <input
-            tabindex="1"
+    <v-container class="form-header-container">
+      <div class="form-header-logo">
+        <v-img height="36" :src="getLogo('main-logo')"></v-img>
+      </div>
+      <h2 class="text-secondary form-header-title">
+        {{ titles.loginProfileTitle }}
+      </h2>
+      <h4 v-if="false" class="text-disabled form-header-subtitle">
+        Please fill out your updated profile information.
+      </h4>
+    </v-container>
+    <Form
+      :validation-schema="schema"
+      :action="getUrl(urls.loginAction)"
+      method="post"
+      class="mt-7 signup-form"
+      v-slot="{ isSubmitting }"
+    >
+      <v-row>
+        <v-col cols="12" sm="6">
+          <text-input
             name="firstName"
             type="text"
+            :label="labels.firstName"
             :value="user.firstName"
-            autocomplete="off"
-          />
-          <span>{{ validations.firstName }}</span>
-        </div>
-        <div :class="validations.lastName ? 'form-group error' : 'form-group'">
-          <label for="lastName">{{ labels.lastName }}</label>
-          <input
-            tabindex="2"
+          >
+          </text-input>
+        </v-col>
+        <v-col cols="12" sm="6">
+          <text-input
             name="lastName"
             type="text"
+            :label="labels.lastName"
             :value="user.lastName"
-            autocomplete="off"
-          />
-          <span>{{ validations.lastName }}</span>
-        </div>
+          >
+          </text-input>
+        </v-col>
+      </v-row>
+      <text-input
+        name="email"
+        type="text"
+        :label="labels.email"
+        class="mt-4 mb-4"
+        required
+        :value="user.email"
+      >
+      </text-input>
+      <text-input
+        v-if="!permissions.registrationEmailAsUsername"
+        name="username"
+        type="text"
+        :label="labels.username"
+        class="mt-4 mb-8"
+        required
+        :value="user.username"
+      >
+      </text-input>
+      <input
+        type="hidden"
+        name="credentialId"
+        :value="forms.selectedCredential"
+        style="display: none"
+      />
+
+      <v-btn
+        color="secondary"
+        :loading="isSubmitting"
+        block
+        class="mt-2"
+        variant="flat"
+        size="large"
+        type="submit"
+      >
+        {{ labels.doSubmit }}</v-btn
+      >
+      <div v-if="message.sumary" class="mt-2">
+        <v-alert
+          :type="message.type"
+          :text="message.sumary"
+          closable
+          variant="tonal"
+        />
       </div>
-      <div class="row">
-        <div :class="validations.email ? 'form-group error' : 'form-group'">
-          <label for="email">{{ labels.email }}</label>
-          <input
-            tabindex="3"
-            name="email"
-            type="text"
-            :value="user.email"
-            autocomplete="off"
-          />
-          <span>{{ validations.email }}</span>
-        </div>
-        <div
-          v-if="!permissions.registrationEmailAsUsername"
-          :class="validations.username ? 'form-group error' : 'form-group'"
-        >
-          <label for="username">{{ labels.username }}</label>
-          <input
-            tabindex="4"
-            name="username"
-            type="text"
-            :value="user.username"
-            autocomplete="off"
-          />
-          <span>{{ validations.username }}</span>
-        </div>
-      </div>
-      <button tabindex="5" type="submit">{{ labels.doSubmit }}</button>
-    </form>
+    </Form>
   </layout>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
 import Layout from '~/components/Layout.vue'
+import TextInput from '~/components/TextInput.vue'
 import { useLogin } from '~/hooks'
+import { Form } from 'vee-validate'
+import * as Yup from 'yup'
 
 export default defineComponent({
   name: 'LoginUpdateProfile',
   components: {
-    Layout
+    Layout,
+    Form,
+    TextInput
   },
   setup() {
-    return useLogin()
+    const defaultValues = useLogin();
+    const baseSchema = {
+      firstName: Yup.string().default(''),
+      lastName: Yup.string().default(''),
+      email: Yup.string().email().required(),
+      username: Yup.string().notRequired()
+    }
+    if (!defaultValues.permissions.value.registrationEmailAsUsername) {
+      baseSchema.username = Yup.string().min(5).required()
+    }
+    return {
+      ...defaultValues,
+      schema: Yup.object().shape(baseSchema),
+    }
   },
   mounted() {
-    console.log('LoginUpdateProfile')
   }
 })
 </script>

@@ -54,7 +54,7 @@ export const useLogin = () => {
   }
 
   const getLogo = (type: string | undefined) => {
-    if (type === 'trackingly') {
+    if (type === 'main-logo') {
       return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/logos/trackingly_logo_pth.svg';
     }
     return '';

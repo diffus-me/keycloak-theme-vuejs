@@ -2,7 +2,7 @@
   <layout>
     <v-container class="form-header-container">
       <div class="form-header-logo">
-        <v-img height="60" :src="getLogo('trackingly')"></v-img>
+        <v-img height="36" :src="getLogo('main-logo')"></v-img>
       </div>
       <h2 class="text-secondary form-header-title">Sign up</h2>
       <h4 v-if="false" class="text-disabled form-header-subtitle">
@@ -174,7 +174,7 @@ export default defineComponent({
     TextInput
   },
   setup() {
-    const defaultValues = useLogin()
+    const defaultValues = useLogin();
     const redirectTo = (url: string) => {
       window.location.href = url
     }

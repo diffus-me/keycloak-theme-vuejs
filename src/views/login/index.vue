@@ -2,7 +2,7 @@
   <layout>
     <v-container class="form-header-container">
       <div class="form-header-logo">
-        <v-img height="60" :src="getLogo('trackingly')"></v-img>
+        <v-img height="36" :src="getLogo('main-logo')"></v-img>
       </div>
       <h2 class="text-secondary form-header-title">Hi, Welcome Back</h2>
       <h4 class="text-disabled form-header-subtitle">
