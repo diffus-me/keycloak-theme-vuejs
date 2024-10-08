@@ -165,6 +165,8 @@ import { useLogin } from '~/hooks'
 import { ref } from 'vue'
 import { Form } from 'vee-validate'
 import * as Yup from 'yup'
+import YupPassword from 'yup-password'
+YupPassword(Yup);
 
 export default defineComponent({
   name: 'Register',
@@ -182,7 +184,11 @@ export default defineComponent({
       firstName: Yup.string().default(''),
       lastName: Yup.string().default(''),
       email: Yup.string().email().required(),
-      password: Yup.string().min(8).required(),
+      password: Yup.string().min(8)
+        .minLowercase(1, 'password must contain at least 1 lower case letter')
+        .minUppercase(1, 'password must contain at least 1 upper case letter')
+        .minNumbers(1, 'password must contain at least 1 number')
+        .minSymbols(1, 'password must contain at least 1 special character').required(),
       'password-confirm': Yup.string()
         .oneOf([Yup.ref('password'), ''], 'Passwords must match')
         .required("Password confirmation can't be empty"),

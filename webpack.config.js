@@ -32,7 +32,7 @@ module.exports = (env, argv) => {
       return entryList
     },
     output: {
-      path: path.resolve(__dirname, 'output', THEME_NAME, 'login'),
+      path: path.resolve(__dirname, '../', THEME_NAME, 'login'),
       filename: 'resources/js/[name].js',
       publicPath: '/'
     },
@@ -109,7 +109,7 @@ module.exports = (env, argv) => {
         patterns: [
           {
             from: path.resolve(__dirname, 'src', 'static'),
-            to: path.resolve(__dirname, 'output', THEME_NAME, 'login')
+            to: path.resolve(__dirname, '../', THEME_NAME, 'login')
           }
         ]
       })
