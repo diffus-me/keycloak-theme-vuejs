@@ -104,7 +104,7 @@
         {{ labels.doLogIn }}</v-btn
       >
       <div v-if="message.sumary" class="mt-2">
-        <v-alert color="error">{{ message.sumary }}</v-alert>
+        <v-alert :color="message.type">{{ message.sumary }}</v-alert>
       </div>
     </Form>
     <div
@@ -149,56 +149,15 @@ export default defineComponent({
 
     return {
       ...defaultValues,
-      show1: ref(false),
       schema: Yup.object().shape({
         username: Yup.string().email().required(),
         password: Yup.string().min(8).required()
       }),
       rememberMe: ref(false || defaultValues.forms.value.loginRememberMe),
       redirectTo,
-
     }
   },
   mounted() {
   }
 })
 </script>
-<style lang="scss">
-.form-header-logo {
-  height: 36px;
-  max-height: 36px;
-}
-.form-header-title {
-  font-size: 1.5rem !important;
-  font-weight: 700;
-  line-height: 2.5rem;
-  letter-spacing: -0.0083333333em !important;
-  font-family: inherit;
-  text-transform: none !important;
-}
-.form-header-subtitle {
-  font-size: 1rem !important;
-  font-weight: 600;
-  line-height: 1.5rem;
-  letter-spacing: 0.0073529412em !important;
-  font-family: inherit;
-  text-transform: none !important;
-}
-.form-social-btn {
-  border-color: #0000001f !important;
-}
-.orbtn {
-  padding: 2px 40px !important;
-  border-color: #0000001f !important;
-  margin: 20px 15px;
-  border-radius: 12px !important;
-}
-.form-sign-title-hint {
-  font-size: 0.875rem !important;
-  font-weight: 500;
-  line-height: 1.2rem;
-  letter-spacing: normal !important;
-  font-family: inherit;
-  text-transform: none !important;
-}
-</style>
