@@ -1,4 +1,5 @@
 import { inject, computed } from 'vue'
+import { slideType } from '~/types/common';
 
 export const useLogin = () => {
   const env = inject('environment') as Environment
@@ -80,5 +81,27 @@ export const useLogin = () => {
     getIcon,
     getLogo,
     getSumary
+  }
+}
+
+export const useConfig = () => {
+  return {
+    slides: [
+      {
+        title: 'A suite of powerful tools to grow your business',
+        description:
+          'From tracking to reporting, we have everything you need to manage your business'
+      },
+      {
+        title: 'Automate growth with AI',
+        description:
+          'State of the art AI models to make sure you are ahead of the competition'
+      },
+      {
+        title: 'Beautiful and easy to use',
+        description:
+          'Our tools are designed to be easy to use and beautiful to look at'
+      }
+    ] as slideType[],
   }
 }

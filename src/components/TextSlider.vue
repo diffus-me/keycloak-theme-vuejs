@@ -1,39 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { slideType } from '~/types/common';
+import { useConfig } from '~/hooks';
 
-type slideType = {
-  title: string
-  description: string
-}
+const { slides } = useConfig();
 
-const slides = ref<slideType[]>([
-  {
-    title: 'A suite of powerful tools to grow your business',
-    description:
-      'From tracking to reporting, we have everything you need to manage your business'
-  },
-  {
-    title: 'Automate growth with AI',
-    description:
-      'State of the art AI models to make sure you are ahead of the competition'
-  },
-  {
-    title: 'Beautiful and easy to use',
-    description:
-      'Our tools are designed to be easy to use and beautiful to look at'
-  }
-])
+const slideItems = ref<slideType[]>(slides);
 </script>
 <template>
-  <v-carousel
-    color="darkText"
-    cycle
-    height="190"
-    hide-delimiter-background
-    class="custom-delimiter"
-    :show-arrows="false"
-  >
-    <v-carousel-item v-for="(slide, i) in slides" :key="i">
+  <v-carousel color="#ffffff" cycle height="190" hide-delimiter-background class="custom-delimiter"
+    :show-arrows="false">
+    <v-carousel-item v-for="(slide, i) in slideItems" :key="i">
       <div class="text-center">
         <h1 class="custom-slider-header">{{ slide.title }}</h1>
         <p class="text-subtitle-1 custom-slider-subheader">
@@ -54,9 +31,11 @@ const slides = ref<slideType[]>([
   text-transform: none !important;
   color: #ffffff !important;
 }
+
 .custom-slider-subheader {
   color: #e6e6e6cc !important;
 }
+
 .custom-delimiter {
   .v-btn {
     font-size: 5px;
