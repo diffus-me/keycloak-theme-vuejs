@@ -24,7 +24,7 @@
           :alt="item.displayName"
           style="height: 22px; width: 22px"
         />
-        <span class="ml-2">Sign up with {{ item.displayName }}</span></v-btn
+        <span class="ml-2 text-none">Sign up with {{ item.displayName }}</span></v-btn
       >
     </v-container>
     <v-row v-if="social.length">
@@ -117,16 +117,13 @@
       <div
         class="d-sm-inline-flex align-center mt-2 mb-7 mb-sm-0 font-weight-bold"
       >
-        <v-checkbox
-          v-model="agreeTerms"
+        <checkbox
           name="terms_and_conditions"
-          :rules="[(v: any) => !!v || 'You must agree to continue!']"
           label="Agree with?"
-          required
           color="primary"
           class="ms-n2"
-          hide-details
-        ></v-checkbox>
+        >
+        </checkbox>
         <a :href="getUrl('terms_and_conditions')" class="ml-1 text-lightText"
           >Terms and Condition</a
         >
@@ -164,6 +161,7 @@
 import { defineComponent } from 'vue'
 import Layout from '~/components/Layout.vue'
 import TextInput from '~/components/TextInput.vue'
+import Checkbox from '~/components/Checkbox.vue'
 import { useLogin } from '~/hooks'
 import { extractFieldsErros } from '~/utils/common'
 import { ref } from 'vue'
@@ -177,7 +175,8 @@ export default defineComponent({
   components: {
     Layout,
     Form,
-    TextInput
+    TextInput,
+    Checkbox
   },
   setup() {
     const defaultValues = useLogin();

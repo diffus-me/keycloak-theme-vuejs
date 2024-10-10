@@ -4,12 +4,15 @@ export const extractFieldsErros = (
   validations: EnvValidation
 ): fieldError[] => {
   let errors: fieldError[] = []
+  let messages = []
   for (const key in validations) {
     if (validations[key]) {
-      errors.push({
-        field: key,
-        message: validations[key]
-      })
+      if (!messages.includes(validations[key])) {
+        errors.push({
+          field: key,
+          message: validations[key]
+        })
+      }
     }
   }
   return errors
