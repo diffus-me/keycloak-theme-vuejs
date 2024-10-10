@@ -83,6 +83,18 @@
           variant="tonal"
         />
       </div>
+      <div
+        v-for="fieldError in fieldErrors"
+        :key="fieldError.field"
+        class="mt-2"
+      >
+        <v-alert
+          type="error"
+          :text="fieldError.message"
+          closable
+          variant="tonal"
+        />
+      </div>
     </Form>
   </layout>
 </template>
@@ -93,6 +105,7 @@ import TextInput from '~/components/TextInput.vue'
 import { useLogin } from '~/hooks'
 import { Form } from 'vee-validate'
 import * as Yup from 'yup'
+import { extractFieldsErros } from '~/utils/common'
 
 export default defineComponent({
   name: 'LoginUpdateProfile',
@@ -102,7 +115,7 @@ export default defineComponent({
     TextInput
   },
   setup() {
-    const defaultValues = useLogin();
+    const defaultValues = useLogin()
     const baseSchema = {
       firstName: Yup.string().default(''),
       lastName: Yup.string().default(''),
@@ -112,12 +125,13 @@ export default defineComponent({
     if (!defaultValues.permissions.value.registrationEmailAsUsername) {
       baseSchema.username = Yup.string().min(5).required()
     }
+    const fieldErrors = extractFieldsErros(defaultValues.validations.value)
     return {
       ...defaultValues,
       schema: Yup.object().shape(baseSchema),
+      fieldErrors: fieldErrors
     }
   },
-  mounted() {
-  }
+  mounted() {}
 })
 </script>

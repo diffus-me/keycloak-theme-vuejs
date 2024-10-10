@@ -6,7 +6,7 @@
       </div>
       <h2 class="text-secondary form-header-title">Hi, Welcome Back</h2>
       <h4 class="text-disabled form-header-subtitle">
-        {{ titles.loginAccountTitle }}
+        Sign in to your account to continue
       </h4>
     </v-container>
     <v-container v-if="social.length" class="ma-0 px-0 pt-5 pb-5">
@@ -108,6 +108,9 @@
       <div v-if="message.sumary" class="mt-2">
         <v-alert :type="message.type" :text="message.sumary" closable variant="tonal" />
       </div>
+      <div v-for="fieldError in fieldErrors" :key="fieldError.field" class="mt-2">
+        <v-alert type="error" :text="fieldError.message" closable variant="tonal" />
+      </div>
     </Form>
     <div
       v-if="
@@ -135,6 +138,7 @@ import { useLogin } from '~/hooks'
 import { ref } from 'vue'
 import { Form } from 'vee-validate'
 import * as Yup from 'yup'
+import { extractFieldsErros } from '~/utils/common'
 
 export default defineComponent({
   name: 'Login',
@@ -148,6 +152,7 @@ export default defineComponent({
     const redirectTo = (url: string) => {
       window.location.href = url
     }
+    const fieldErrors = extractFieldsErros(defaultValues.validations.value);
 
     return {
       ...defaultValues,
@@ -156,6 +161,7 @@ export default defineComponent({
         password: Yup.string().min(8).required()
       }),
       rememberMe: ref(false || defaultValues.forms.value.loginRememberMe),
+      fieldErrors: fieldErrors,
       redirectTo
     }
   },

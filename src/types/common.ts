@@ -3,3 +3,8 @@ export type slideType = {
   description: string
   image?: string | null
 }
+
+export type fieldError = {
+  field: string
+  message: string
+}

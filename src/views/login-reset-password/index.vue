@@ -42,6 +42,9 @@
       <div v-if="message.sumary" class="mt-2">
         <v-alert :type="message.type" :text="message.sumary" closable variant="tonal" />
       </div>
+      <div v-for="fieldError in fieldErrors" :key="fieldError.field" class="mt-2">
+        <v-alert type="error" :text="fieldError.message" closable variant="tonal" />
+      </div>
     </Form>
     <div class="mt-5 text-right">
       <v-divider />
@@ -61,6 +64,7 @@ import TextInput from '~/components/TextInput.vue'
 import { useLogin } from '~/hooks'
 import { Form } from 'vee-validate'
 import * as Yup from 'yup'
+import { extractFieldsErros } from '~/utils/common'
 
 export default defineComponent({
   name: 'ResetPassword',
@@ -70,14 +74,17 @@ export default defineComponent({
     TextInput
   },
   setup() {
+    const defaultValues = useLogin()
     const redirectTo = (url: string) => {
       window.location.href = url
     }
+    const fieldErrors = extractFieldsErros(defaultValues.validations.value);
     return {
-      ...useLogin(),
+      ...defaultValues,
       schema: Yup.object().shape({
         username: Yup.string().email().required()
       }),
+      fieldErrors: fieldErrors,
       redirectTo
     }
   },

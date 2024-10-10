@@ -4,9 +4,9 @@
       <div class="form-header-logo">
         <v-img height="36" :src="getLogo('main-logo')"></v-img>
       </div>
-      <h2 class="text-secondary form-header-title">Sign up</h2>
-      <h4 v-if="false" class="text-disabled form-header-subtitle">
-        {{ titles.registerTitle }}
+      <h2 class="text-secondary form-header-title">{{ titles.registerTitle }}</h2>
+      <h4 class="text-disabled form-header-subtitle">
+        Enter your email address to create an account
       </h4>
     </v-container>
     <v-container v-if="social.length" class="ma-0 px-0 pt-5 pb-5">
@@ -145,6 +145,9 @@
       <div v-if="message.sumary" class="mt-2">
         <v-alert :type="message.type" :text="message.sumary" closable variant="tonal" />
       </div>
+      <div v-for="fieldError in fieldErrors" :key="fieldError.field" class="mt-2">
+        <v-alert type="error" :text="fieldError.message" closable variant="tonal" />
+      </div>
     </Form>
     <div class="mt-5 text-right">
       <v-divider />
@@ -162,6 +165,7 @@ import { defineComponent } from 'vue'
 import Layout from '~/components/Layout.vue'
 import TextInput from '~/components/TextInput.vue'
 import { useLogin } from '~/hooks'
+import { extractFieldsErros } from '~/utils/common'
 import { ref } from 'vue'
 import { Form } from 'vee-validate'
 import * as Yup from 'yup'
@@ -201,10 +205,12 @@ export default defineComponent({
     if (!defaultValues.permissions.value.registrationEmailAsUsername) {
       baseSchema.username = Yup.string().min(5).required()
     }
+    const fieldErrors = extractFieldsErros(defaultValues.validations.value);
     return {
       ...defaultValues,
       schema: Yup.object().shape(baseSchema),
       agreeTerms: ref(false),
+      fieldErrors: fieldErrors,
       redirectTo
     }
   },
