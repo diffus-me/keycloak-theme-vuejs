@@ -13,10 +13,10 @@
     </v-container>
     <div class="mt-7">
       <div class="my-4 font-weight-regular text-medium-emphasis">
-        {{ instruction.emailVerifyInstruction2 }}
+        <p v-html="instruction.emailVerifyInstruction2"></p>
         <br />
         <a :href="getUrl(urls.loginAction)">{{ labels.doClickHere }}</a>
-        {{ instruction.emailVerifyInstruction3 }}
+        <p v-html="instruction.emailVerifyInstruction3"></p>
       </div>
       <div v-if="message.sumary" class="mt-2">
         <v-alert
@@ -32,7 +32,7 @@
       <v-btn
         variant="plain"
         class="mt-2 text-capitalize mr-n2"
-        @click="redirectTo(getUrl(urls.login))"
+        @click="redirectTo(getUrl(urls.loginRestartFlowUrl))"
         >{{ labels.backToLogin }}</v-btn
       >
     </div>

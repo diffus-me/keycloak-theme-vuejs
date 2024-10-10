@@ -24,7 +24,8 @@
         "loginAction": "${url.loginAction}",
         "registrationAction": "${url.registrationAction}",
         "logoutConfirmAction": "${url.logoutConfirmAction}",
-        "clientBaseUrl":  <#if logoutConfirm??><#if logoutConfirm.skipLink>""<#else><#if (client.baseUrl)?has_content>"${client.baseUrl}"<#else>""</#if></#if><#else>""</#if>
+        "clientBaseUrl":  <#if logoutConfirm??><#if logoutConfirm.skipLink>""<#else><#if (client.baseUrl)?has_content>"${client.baseUrl}"<#else>""</#if></#if><#else>""</#if>,
+        "loginRestartFlowUrl": "${url.loginRestartFlowUrl}"
       },
       "titles": {
         "loginProfileTitle": "${msg("loginProfileTitle")}",

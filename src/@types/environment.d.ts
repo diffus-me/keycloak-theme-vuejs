@@ -6,6 +6,7 @@ interface EnvUrl {
   registrationAction: string
   logoutConfirmAction: string
   clientBaseUrl: string
+  loginRestartFlowUrl: string
 }
 
 interface EnvTitle {
