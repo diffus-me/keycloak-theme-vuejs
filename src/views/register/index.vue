@@ -227,10 +227,10 @@ export default defineComponent({
       baseSchema.username = Yup.string().min(5).required()
     }
     if (firstNameRequired) {
-      baseSchema.firstName = Yup.string().min(3).required();
+      baseSchema.firstName = Yup.string().min(1).required("First name can't be empty");
     }
     if (lastNameRequired) {
-      baseSchema.lastName = Yup.string().min(3).required();
+      baseSchema.lastName = Yup.string().min(1).required("Last name can't be empty");
     }
     const fieldErrors = extractFieldsErros(defaultValues.validations.value)
     return {
