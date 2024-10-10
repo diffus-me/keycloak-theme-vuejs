@@ -24,7 +24,7 @@
         "loginAction": "${url.loginAction}",
         "registrationAction": "${url.registrationAction}",
         "logoutConfirmAction": "${url.logoutConfirmAction}",
-        "clientBaseUrl":  <#if logoutConfirm.skipLink>""<#else><#if (client.baseUrl)?has_content>"${client.baseUrl}"<#else>""</#if></#if>
+        "clientBaseUrl":  <#if logoutConfirm??><#if logoutConfirm.skipLink>""<#else><#if (client.baseUrl)?has_content>"${client.baseUrl}"<#else>""</#if></#if><#else>""</#if>
       },
       "titles": {
         "loginProfileTitle": "${msg("loginProfileTitle")}",
@@ -76,7 +76,7 @@
         "registerLastName": <#if register??>"${(register.formData.lastName!'')}"<#else>""</#if>,
         "registerEmail": <#if register??>"${(register.formData.email!'')}"<#else>""</#if>,
         "registerUsername": <#if register??>"${(register.formData.username!'')}"<#else>""</#if>,
-        "logoutConfirmCode": "${logoutConfirm.code}"
+        "logoutConfirmCode": <#if logoutConfirm??>"${logoutConfirm.code}"<#else>""</#if>
       },
       "user": {
         "username": <#if user??>"${(user.username!'')}"<#else>""</#if>,
