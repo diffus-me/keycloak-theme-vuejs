@@ -22,7 +22,9 @@
         "login": "${url.loginUrl}",
         "registration": "${url.registrationUrl}",
         "loginAction": "${url.loginAction}",
-        "registrationAction": "${url.registrationAction}"
+        "registrationAction": "${url.registrationAction}",
+        "logoutConfirmAction": "${url.logoutConfirmAction}",
+        "clientBaseUrl":  <#if logoutConfirm.skipLink>""<#else><#if (client.baseUrl)?has_content>"${client.baseUrl}"<#else>""</#if></#if>
       },
       "titles": {
         "loginProfileTitle": "${msg("loginProfileTitle")}",
@@ -30,7 +32,9 @@
         "registerTitle": "${msg("registerTitle")}",
         "emailForgotTitle": "${msg("emailForgotTitle")}",
         "confirmLinkIdpTitle": "${msg("confirmLinkIdpTitle")}",
-        "emailLinkIdpTitle": "${msg("emailLinkIdpTitle", idpDisplayName)}"
+        "emailLinkIdpTitle": "${msg("emailLinkIdpTitle", idpDisplayName)}",
+        "emailVerifyTitle": "${msg("emailVerifyTitle")}",
+        "logoutConfirmTitle": "${msg("logoutConfirmTitle")}"
       },
       "permissions": {
         "usernameEditDisabled": <#if usernameEditDisabled??>true<#else>false</#if>,
@@ -59,7 +63,10 @@
         "doRegister": "${msg("doRegister")}",
         "backToLogin": "${kcSanitize(msg("backToLogin"))?no_esc}",
         "confirmLinkIdpContinue": "${msg("confirmLinkIdpContinue")}",
-        "doClickHere": "${msg("doClickHere")}"
+        "doClickHere": "${msg("doClickHere")}",
+        "doLogout": "${msg("doLogout")}",
+        "logoutConfirmHeader": "${msg("logoutConfirmHeader")}",
+        "backToApplication": "${kcSanitize(msg("backToApplication"))?no_esc}"
       },
       "forms": {
         "loginUsername": "${(login.username!'')}",
@@ -68,7 +75,8 @@
         "registerFirstName": <#if register??>"${(register.formData.firstName!'')}"<#else>""</#if>,
         "registerLastName": <#if register??>"${(register.formData.lastName!'')}"<#else>""</#if>,
         "registerEmail": <#if register??>"${(register.formData.email!'')}"<#else>""</#if>,
-        "registerUsername": <#if register??>"${(register.formData.username!'')}"<#else>""</#if>
+        "registerUsername": <#if register??>"${(register.formData.username!'')}"<#else>""</#if>,
+        "logoutConfirmCode": "${logoutConfirm.code}"
       },
       "user": {
         "username": <#if user??>"${(user.username!'')}"<#else>""</#if>,
@@ -90,6 +98,9 @@
         "sumary": <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>"${kcSanitize(message.summary)?no_esc}"<#else>""</#if>
       },
       "instruction": {
+        "emailVerifyInstruction1": "${msg("emailVerifyInstruction1")}",
+        "emailVerifyInstruction2": "${msg("emailVerifyInstruction2")}",
+        "emailVerifyInstruction3": "${msg("emailVerifyInstruction3")}"
       },
       "social": [
         <#if realm.password && social.providers??>

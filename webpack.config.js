@@ -12,7 +12,9 @@ const entries = [
   'login-reset-password',
   'login-update-profile',
   'login-idp-link-confirm',
-  'login-idp-link-email'
+  'login-idp-link-email',
+  'login-verify-email',
+  'logout-confirm'
 ]
 
 module.exports = (env, argv) => {

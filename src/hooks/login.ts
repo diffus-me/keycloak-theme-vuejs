@@ -91,5 +91,7 @@ export const useConfig = () => {
           'Our tools are designed to be easy to use and beautiful to look at'
       }
     ] as slideType[],
+    firstNameRequired: true,
+    lastNameRequired: true,
   }
 }

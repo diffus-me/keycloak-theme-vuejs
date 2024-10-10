@@ -4,6 +4,8 @@ interface EnvUrl {
   login: string
   loginAction: string
   registrationAction: string
+  logoutConfirmAction: string
+  clientBaseUrl: string
 }
 
 interface EnvTitle {
@@ -13,6 +15,8 @@ interface EnvTitle {
   emailForgotTitle: string
   confirmLinkIdpTitle: string
   emailLinkIdpTitle: string
+  emailVerifyTitle: string
+  logoutConfirmTitle: string
 }
 
 interface EnvPermission {
@@ -44,6 +48,9 @@ interface EnvLabel {
   backToLogin: string
   confirmLinkIdpContinue: string
   doClickHere: string
+  doLogout: string
+  logoutConfirmHeader: string
+  backToApplication: string
 }
 
 interface EnvForm {
@@ -54,6 +61,7 @@ interface EnvForm {
   registerLastName: string
   registerEmail: string
   registerUsername: string
+  logoutConfirmCode: string
 }
 
 interface EnvUser {
@@ -84,6 +92,9 @@ interface EnvInstruction {
   emailLinkIdp3: string
   emailLinkIdp4: string
   emailLinkIdp5: string
+  emailVerifyInstruction1: string
+  emailVerifyInstruction2: string
+  emailVerifyInstruction3: string
 }
 
 interface EnvSocial {

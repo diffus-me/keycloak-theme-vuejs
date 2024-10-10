@@ -55,8 +55,8 @@
       class="mt-7 signup-form"
       v-slot="{ isSubmitting }"
     >
-      <v-row>
-        <v-col cols="12" sm="6">
+      <v-row v-if="firstNameRequired || lastNameRequired">
+        <v-col v-if="firstNameRequired" cols="12" :sm="lastNameRequired? 6: 12">
           <text-input
             name="firstName"
             type="text"
@@ -65,7 +65,7 @@
           >
           </text-input>
         </v-col>
-        <v-col cols="12" sm="6">
+        <v-col v-if="lastNameRequired" cols="12" :sm="firstNameRequired? 6: 12">
           <text-input
             name="lastName"
             type="text"
@@ -181,7 +181,7 @@ import { defineComponent } from 'vue'
 import Layout from '~/components/Layout.vue'
 import TextInput from '~/components/TextInput.vue'
 import Checkbox from '~/components/Checkbox.vue'
-import { useLogin } from '~/hooks'
+import { useConfig, useLogin } from '~/hooks'
 import { extractFieldsErros } from '~/utils/common'
 import { ref } from 'vue'
 import { Form } from 'vee-validate'
@@ -202,9 +202,10 @@ export default defineComponent({
     const redirectTo = (url: string) => {
       window.location.href = url
     }
+    const { firstNameRequired, lastNameRequired } = useConfig();
     const baseSchema = {
-      firstName: Yup.string().default(''),
-      lastName: Yup.string().default(''),
+      firstName: Yup.string().notRequired(),
+      lastName: Yup.string().notRequired(),
       email: Yup.string().email().required(),
       password: Yup.string()
         .min(8)
@@ -225,12 +226,20 @@ export default defineComponent({
     if (!defaultValues.permissions.value.registrationEmailAsUsername) {
       baseSchema.username = Yup.string().min(5).required()
     }
+    if (firstNameRequired) {
+      baseSchema.firstName = Yup.string().min(3).required();
+    }
+    if (lastNameRequired) {
+      baseSchema.lastName = Yup.string().min(3).required();
+    }
     const fieldErrors = extractFieldsErros(defaultValues.validations.value)
     return {
       ...defaultValues,
       schema: Yup.object().shape(baseSchema),
       agreeTerms: ref(false),
       fieldErrors: fieldErrors,
+      firstNameRequired: firstNameRequired,
+      lastNameRequired: lastNameRequired,
       redirectTo
     }
   },
