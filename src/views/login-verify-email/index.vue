@@ -12,11 +12,7 @@
       </h4>
     </v-container>
     <div class="mt-7">
-      <div class="my-4 font-weight-regular text-medium-emphasis">
-        <p v-html="instruction.emailVerifyInstruction2"></p>
-        <br />
-        <a :href="getUrl(urls.loginAction)">{{ labels.doClickHere }}</a>
-        <p v-html="instruction.emailVerifyInstruction3"></p>
+      <div class="my-4 font-weight-regular text-medium-emphasis" v-html="getHint()">
       </div>
       <div v-if="message.sumary" class="mt-2">
         <v-alert
@@ -46,15 +42,24 @@ import { useLogin } from '~/hooks'
 export default defineComponent({
   name: 'LoginVerifyEmail',
   components: {
-    Layout,
+    Layout
   },
   setup() {
+    const defaultValues = useLogin()
     const redirectTo = (url: string) => {
       window.location.href = url
     }
+    const getHint = (): string => {
+      const hint1 = defaultValues.instruction.value.emailVerifyInstruction2
+      const hint2 = defaultValues.instruction.value.emailVerifyInstruction3
+      const loginLink = defaultValues.getUrl(defaultValues.urls.value.loginAction)
+      const label = defaultValues.labels.value.doClickHere
+      return `${hint1}<br /><a :href="${loginLink}">${label}</a>${hint2}`
+    }
     return {
-      ...useLogin(),
-      redirectTo
+      ...defaultValues,
+      redirectTo,
+      getHint
     }
   },
   mounted() {}

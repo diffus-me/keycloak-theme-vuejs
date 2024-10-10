@@ -21,7 +21,7 @@
         "loginResetCredentials": "${url.loginResetCredentialsUrl}",
         "login": "${url.loginUrl}",
         "registration": "${url.registrationUrl}",
-        "loginAction": "${url.loginAction}",
+        "loginAction": <#if logoutConfirm??>""<#else>"${url.loginAction}"</#if>,
         "registrationAction": "${url.registrationAction}",
         "logoutConfirmAction": "${url.logoutConfirmAction}",
         "clientBaseUrl":  <#if logoutConfirm??><#if logoutConfirm.skipLink>""<#else><#if (client.baseUrl)?has_content>"${client.baseUrl}"<#else>""</#if></#if><#else>""</#if>,
@@ -35,7 +35,8 @@
         "confirmLinkIdpTitle": "${msg("confirmLinkIdpTitle")}",
         "emailLinkIdpTitle": "${msg("emailLinkIdpTitle", idpDisplayName)}",
         "emailVerifyTitle": "${msg("emailVerifyTitle")}",
-        "logoutConfirmTitle": "${msg("logoutConfirmTitle")}"
+        "logoutConfirmTitle": "${msg("logoutConfirmTitle")}",
+        "errorTitle": "${kcSanitize(msg("errorTitle"))?no_esc}"
       },
       "permissions": {
         "usernameEditDisabled": <#if usernameEditDisabled??>true<#else>false</#if>,

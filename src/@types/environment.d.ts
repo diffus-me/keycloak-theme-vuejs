@@ -18,6 +18,7 @@ interface EnvTitle {
   emailLinkIdpTitle: string
   emailVerifyTitle: string
   logoutConfirmTitle: string
+  errorTitle: string
 }
 
 interface EnvPermission {
