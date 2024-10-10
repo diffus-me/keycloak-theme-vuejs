@@ -24,7 +24,7 @@
           :alt="item.displayName"
           style="height: 22px; width: 22px"
         />
-        <span class="ml-2">Sign in with {{ item.displayName }}</span></v-btn
+        <span class="ml-2 text-none">Sign in with {{ item.displayName }}</span></v-btn
       >
     </v-container>
     <v-row v-if="social.length">
@@ -44,10 +44,6 @@
     <h5 v-if="social.length" class="form-sign-title-hint text-center my-4 mb-8">
       Sign in with Email address
     </h5>
-    <!--<div v-if="message.sumary" :class="`alert-${message.type}`">
-      <span v-html="getIcon(message.type)"></span>
-      <span>{{ message.sumary }}</span>
-    </div>-->
     <Form
       :validation-schema="schema"
       :action="getUrl(urls.loginAction)"

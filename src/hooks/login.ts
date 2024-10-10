@@ -21,18 +21,6 @@ export const useLogin = () => {
   }
 
   const getIcon = (type: string | undefined) => {
-    if (type === 'info') {
-      return '<i class="fas fa-info-circle"></i>'
-    }
-    if (type === 'error') {
-      return '<i class="fas fa-times-circle"></i>'
-    }
-    if (type === 'warning') {
-      return '<i class="fas fa-exclamation-triangle"></i>'
-    }
-    if (type === 'success') {
-      return '<i class="fas fa-check-circle"></i>'
-    }
     if (type === 'github') {
       return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/social/logos/github-logo-icon.svg'
     }
@@ -51,7 +39,7 @@ export const useLogin = () => {
     if (type === 'twitter') {
       return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/social/logos/twitter-logo-icon.svg'
     }
-    return '<i></i>'
+    return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/social/logos/shield-icon.svg'
   }
 
   const getLogo = (type: string | undefined) => {
