@@ -54,7 +54,7 @@ export default defineComponent({
       const hint2 = defaultValues.instruction.value.emailVerifyInstruction3
       const loginLink = defaultValues.getUrl(defaultValues.urls.value.loginAction)
       const label = defaultValues.labels.value.doClickHere
-      return `${hint1}<br /><a :href="${loginLink}">${label}</a>${hint2}`
+      return `${hint1}<br /><a class="resent-code-link" href="${loginLink}">${label}</a> ${hint2}`
     }
     return {
       ...defaultValues,
@@ -65,3 +65,8 @@ export default defineComponent({
   mounted() {}
 })
 </script>
+<style lang="scss">
+.resent-code-link {
+  color: rgb(var(--v-theme-secondary)) !important;
+}
+</style>
