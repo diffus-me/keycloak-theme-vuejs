@@ -28,40 +28,31 @@ const name = toRef(props, 'name')
 
 // we don't provide any rules here because we are using form-level validation
 // https://vee-validate.logaretm.com/v4/guide/validation#form-level-validation
-const { checked, errorMessage, handleChange, meta } = useField(
+const { checked, errorMessage, handleChange } = useField(
   name,
   undefined,
   {
     type: 'checkbox',
-    checkedValue: props.value
+    checkedValue: true,
+    uncheckedValue: false,
+    initialValue: props.value
   }
 )
 
-const boxChecked = defineModel({
-  default: checked,
-  type: Boolean
-})
+const boxChecked = ref(checked)
 </script>
 <template>
-  <div
-    class="TextInput"
-    :class="{ 'has-error': !!errorMessage, success: meta.valid }"
+  <v-checkbox
+    v-model="boxChecked"
+    :label="props.label"
+    :id="name"
+    :name="name"
+    :color="$attrs.color"
+    :class="$attrs.class"
+    :required="props.required"
+    hide-details
+    :error-messages="errorMessage"
+    @update:model-value="handleChange"
   >
-    <v-checkbox
-      v-model="boxChecked"
-      :label="label"
-      :id="name"
-      :name="name"
-      :color="$attrs.color"
-      :class="$attrs.class"
-      :required="props.required"
-      hide-details
-      :error-messages="errorMessage"
-      @update:model-value="handleChange"
-    >
-      <template v-slot:label>
-        <slot name="label"></slot>
-      </template>
-    </v-checkbox>
-  </div>
+  </v-checkbox>
 </template>

@@ -4,7 +4,9 @@
       <div class="form-header-logo">
         <v-img height="36" :src="getLogo('main-logo')"></v-img>
       </div>
-      <h2 class="text-secondary form-header-title">{{ titles.registerTitle }}</h2>
+      <h2 class="text-secondary form-header-title">
+        {{ titles.registerTitle }}
+      </h2>
       <h4 class="text-disabled form-header-subtitle">
         Enter your email address to create an account
       </h4>
@@ -24,7 +26,9 @@
           :alt="item.displayName"
           style="height: 22px; width: 22px"
         />
-        <span class="ml-2 text-none">Sign up with {{ item.displayName }}</span></v-btn
+        <span class="ml-2 text-none"
+          >Sign up with {{ item.displayName }}</span
+        ></v-btn
       >
     </v-container>
     <v-row v-if="social.length">
@@ -122,6 +126,7 @@
           label="Agree with?"
           color="primary"
           class="ms-n2"
+          :value="false"
         >
         </checkbox>
         <a :href="getUrl('terms_and_conditions')" class="ml-1 text-lightText"
@@ -140,10 +145,24 @@
         {{ labels.doRegister }}</v-btn
       >
       <div v-if="message.sumary" class="mt-2">
-        <v-alert :type="message.type" :text="message.sumary" closable variant="tonal" />
+        <v-alert
+          :type="message.type"
+          :text="message.sumary"
+          closable
+          variant="tonal"
+        />
       </div>
-      <div v-for="fieldError in fieldErrors" :key="fieldError.field" class="mt-2">
-        <v-alert type="error" :text="fieldError.message" closable variant="tonal" />
+      <div
+        v-for="fieldError in fieldErrors"
+        :key="fieldError.field"
+        class="mt-2"
+      >
+        <v-alert
+          type="error"
+          :text="fieldError.message"
+          closable
+          variant="tonal"
+        />
       </div>
     </Form>
     <div class="mt-5 text-right">
@@ -168,7 +187,7 @@ import { ref } from 'vue'
 import { Form } from 'vee-validate'
 import * as Yup from 'yup'
 import YupPassword from 'yup-password'
-YupPassword(Yup);
+YupPassword(Yup)
 
 export default defineComponent({
   name: 'Register',
@@ -179,7 +198,7 @@ export default defineComponent({
     Checkbox
   },
   setup() {
-    const defaultValues = useLogin();
+    const defaultValues = useLogin()
     const redirectTo = (url: string) => {
       window.location.href = url
     }
@@ -187,24 +206,26 @@ export default defineComponent({
       firstName: Yup.string().default(''),
       lastName: Yup.string().default(''),
       email: Yup.string().email().required(),
-      password: Yup.string().min(8)
+      password: Yup.string()
+        .min(8)
         .minLowercase(1, 'password must contain at least 1 lower case letter')
         .minUppercase(1, 'password must contain at least 1 upper case letter')
         .minNumbers(1, 'password must contain at least 1 number')
-        .minSymbols(1, 'password must contain at least 1 special character').required(),
+        .minSymbols(1, 'password must contain at least 1 special character')
+        .required(),
       'password-confirm': Yup.string()
         .oneOf([Yup.ref('password'), ''], 'Passwords must match')
         .required("Password confirmation can't be empty"),
       terms_and_conditions: Yup.boolean().oneOf(
         [true],
         'You must agree to continue!'
-      ).required(),
+      ),
       username: Yup.string().notRequired()
     }
     if (!defaultValues.permissions.value.registrationEmailAsUsername) {
       baseSchema.username = Yup.string().min(5).required()
     }
-    const fieldErrors = extractFieldsErros(defaultValues.validations.value);
+    const fieldErrors = extractFieldsErros(defaultValues.validations.value)
     return {
       ...defaultValues,
       schema: Yup.object().shape(baseSchema),
