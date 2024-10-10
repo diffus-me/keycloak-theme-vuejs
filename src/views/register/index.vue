@@ -199,7 +199,7 @@ export default defineComponent({
       terms_and_conditions: Yup.boolean().oneOf(
         [true],
         'You must agree to continue!'
-      ),
+      ).required(),
       username: Yup.string().notRequired()
     }
     if (!defaultValues.permissions.value.registrationEmailAsUsername) {
