@@ -124,7 +124,7 @@ export default defineComponent({
         .minSymbols(1, 'password must contain at least 1 special character')
         .required(),
       'password-confirm': Yup.string()
-        .oneOf([Yup.ref('password'), ''], 'Passwords must match')
+        .oneOf([Yup.ref('password-new'), ''], 'Passwords must match')
         .required("Password confirmation can't be empty"),
     }
     const fieldErrors = extractFieldsErros(defaultValues.validations.value)
