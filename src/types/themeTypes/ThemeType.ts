@@ -32,7 +32,6 @@ export type ThemeTypes = {
     gray100?: string;
     primary200?: string;
     secondary200?: string;
-    'light-border-opacity'?: number;
     'carousel-dot-color'?: string;
     'carousel-title-color'?: string;
     'carousel-subtitle-color'?: string;

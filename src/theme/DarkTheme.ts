@@ -38,13 +38,16 @@ const DarkOrangeTheme: ThemeTypes = {
 const DarkPurpleTheme: ThemeTypes = {
   name: 'DarkPurpleTheme',
   dark: true,
+  variables: {
+    'high-opacity': 1,
+    'light-opacity': 0.12,
+  },
   colors: {
     primary: '#cccccc',
     secondary: '#4353ff',
     surface: '#121212',
     background: '#000000',
     'subtitle-text-color': '#ffffff',
-    'light-border-opacity': 0.12,
     'carousel-dot-color': '#ffffff',
     'carousel-title-color': '#ffffff',
     'carousel-subtitle-color': '#e6e6e6cc',

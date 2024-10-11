@@ -5,7 +5,8 @@ const OrangeTheme: ThemeTypes = {
   dark: false,
   variables: {
     'border-color': '#1e88e5',
-    'high-opacity': 1
+    'high-opacity': 1,
+    'light-opacity': 0.12,
   },
   colors: {
     primary: '#04adbf',
@@ -13,7 +14,6 @@ const OrangeTheme: ThemeTypes = {
     surface: '#fff',
     background: '#eef2f6',
     'subtitle-text-color': '#000000',
-    'light-border-opacity': 0.12,
     'carousel-dot-color': '#ffffff',
     'carousel-title-color': '#ffffff',
     'carousel-subtitle-color': '#e6e6e6cc',
