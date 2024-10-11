@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const THEME_NAME = 'trackingly'
+const THEME_NAME = 'diffus-vue'
 const entries = [
   'login',
   'register',
