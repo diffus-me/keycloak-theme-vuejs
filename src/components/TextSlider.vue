@@ -8,7 +8,7 @@ const { slides } = useConfig();
 const slideItems = ref<slideType[]>(slides);
 </script>
 <template>
-  <v-carousel color="#ffffff" cycle height="190" hide-delimiter-background class="custom-delimiter"
+  <v-carousel cycle height="190" hide-delimiter-background class="custom-delimiter"
     :show-arrows="false">
     <v-carousel-item v-for="(slide, i) in slideItems" :key="i">
       <div class="text-center">
@@ -29,17 +29,18 @@ const slideItems = ref<slideType[]>(slides);
   letter-spacing: -0.015625em !important;
   font-family: inherit;
   text-transform: none !important;
-  color: #ffffff !important;
+  color: rgba(var(--v-theme-carousel-title-color)) !important;
 }
 
 .custom-slider-subheader {
   color: #e6e6e6cc !important;
+  color: rgba(var(--v-theme-carousel-subtitle-color)) !important;
 }
 
 .custom-delimiter {
   .v-btn {
     font-size: 5px;
-    color: #ffffff !important;
+    color: rgba(var(--v-theme-carousel-dot-color)) !important;
   }
 }
 </style>

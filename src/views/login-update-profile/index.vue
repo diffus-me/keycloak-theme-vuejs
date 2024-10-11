@@ -7,7 +7,7 @@
       <h2 class="text-secondary form-header-title">
         {{ titles.loginProfileTitle }}
       </h2>
-      <h4 v-if="false" class="text-disabled form-header-subtitle">
+      <h4 v-if="false" class="form-text-subtitle form-header-subtitle">
         Please fill out your updated profile information.
       </h4>
     </v-container>

@@ -35,4 +35,44 @@ const DarkOrangeTheme: ThemeTypes = {
   }
 };
 
-export { DarkOrangeTheme };
+const DarkPurpleTheme: ThemeTypes = {
+  name: 'DarkPurpleTheme',
+  dark: true,
+  colors: {
+    primary: '#cccccc',
+    secondary: '#4353ff',
+    surface: '#121212',
+    background: '#000000',
+    'subtitle-text-color': '#ffffff',
+    'light-border-opacity': 0.12,
+    'carousel-dot-color': '#ffffff',
+    'carousel-title-color': '#ffffff',
+    'carousel-subtitle-color': '#e6e6e6cc',
+    info: '#03c9d7',
+    success: '#05b187',
+    accent: '#fc4b6c',
+    warning: '#fec90f',
+    error: '#fc4b6c',
+    lightprimary: '#ffffff',
+    lightsecondary: '#6e7aff',
+    lightsuccess: '#143c33',
+    lighterror: '#f9d8d8',
+    lightwarning: '#fff8e1',
+    darkprimary: '#555555',
+    darksecondary: '#293189',
+    darkText: '#d7dcec',
+    lightText: '#bdc8f0',
+    borderLight: '#404968',
+    inputBorder: '#5f698d',
+    containerBg: '#1a223f',
+    'on-surface-variant': '#111936',
+    facebook: '#4267b2',
+    twitter: '#1da1f2',
+    linkedin: '#0e76a8',
+    gray100: '#19203c',
+    primary200: '#90caf9',
+    secondary200: '#b39ddb'
+  }
+};
+
+export { DarkOrangeTheme, DarkPurpleTheme };

@@ -7,7 +7,7 @@
       <h2 class="text-secondary form-header-title">
         {{ titles.emailVerifyTitle }}
       </h2>
-      <h4 class="text-disabled form-header-subtitle font-weight-regular">
+      <h4 class="form-text-subtitle form-header-subtitle font-weight-regular">
         {{ instruction.emailVerifyInstruction1 }} {{ user.email }}.
       </h4>
     </v-container>

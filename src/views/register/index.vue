@@ -7,7 +7,7 @@
       <h2 class="text-secondary form-header-title">
         {{ titles.registerTitle }}
       </h2>
-      <h4 class="text-disabled form-header-subtitle">
+      <h4 class="form-text-subtitle form-header-subtitle">
         Enter your email address to create an account
       </h4>
     </v-container>

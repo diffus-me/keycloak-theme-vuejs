@@ -6,7 +6,7 @@
       lg="6"
       xl="5"
       class="d-flex align-center"
-      style="background-color: #eef2f6 !important"
+      id="form-container-background"
     >
       <PerfectScrollbar class="d-flex align-center">
         <v-container>
@@ -72,6 +72,7 @@ export default defineComponent({
   max-width: 475px;
   margin: 0 auto;
   border-radius: 12px !important;
+  background: rgb(var(--v-theme-surface));
 }
 .formBox {
   border-radius: 12px !important;
@@ -84,5 +85,8 @@ export default defineComponent({
 .ps {
   width: 100%;
   height: 100vh;
+}
+#form-container-background {
+  background: rgb(var(--v-theme-background)) !important;
 }
 </style>

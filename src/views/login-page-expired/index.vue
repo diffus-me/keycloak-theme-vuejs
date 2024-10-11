@@ -7,7 +7,7 @@
       <h2 class="text-secondary form-header-title">
         {{ titles.pageExpiredTitle }}
       </h2>
-      <h4 class="text-disabled form-header-subtitle font-weight-regular">
+      <h4 class="form-text-subtitle form-header-subtitle font-weight-regular">
         Your session has expired. Please decide what you would like to do next
       </h4>
     </v-container>

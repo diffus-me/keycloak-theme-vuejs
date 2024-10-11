@@ -7,7 +7,7 @@
       <h2 class="text-secondary form-header-title">
         {{ titles.emailForgotTitle }}
       </h2>
-      <h4 class="text-disabled form-header-subtitle font-weight-regular">
+      <h4 class="form-text-subtitle form-header-subtitle font-weight-regular">
         Enter your email address below and we'll send you password reset
         instructions.
       </h4>

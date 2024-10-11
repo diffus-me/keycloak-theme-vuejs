@@ -5,7 +5,7 @@
         <v-img height="36" :src="getLogo('main-logo')"></v-img>
       </div>
       <h2 class="text-secondary form-header-title">Hi, Welcome Back</h2>
-      <h4 class="text-disabled form-header-subtitle">
+      <h4 class="form-text-subtitle form-header-subtitle">
         Sign in to your account to continue
       </h4>
     </v-container>
@@ -14,7 +14,6 @@
         v-for="item in social"
         :key="item.alias"
         block
-        color="primary"
         variant="outlined"
         class="text-lightText mt-3 form-social-btn"
         @click="redirectTo(getUrl(item.loginUrl))"

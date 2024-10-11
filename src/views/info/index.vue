@@ -7,7 +7,7 @@
       <h2 class="text-secondary form-header-title">
         {{ titles.messageHeader }}
       </h2>
-      <h4 v-if="titles.messageHeader != message.sumary" class="text-disabled form-header-subtitle font-weight-regular">
+      <h4 v-if="titles.messageHeader != message.sumary" class="form-text-subtitle form-header-subtitle font-weight-regular">
         {{ message.sumary }}
       </h4>
     </v-container>

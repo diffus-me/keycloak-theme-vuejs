@@ -245,11 +245,11 @@ button[type='submit'] {
   text-transform: none !important;
 }
 .form-social-btn {
-  border-color: #0000001f !important;
+  border-color: rgba(var(--v-theme-subtitle-text-color), var(--v-theme-light-border-opacity)) !important;
 }
 .orbtn {
   padding: 2px 40px !important;
-  border-color: #0000001f !important;
+  border-color: rgba(var(--v-theme-subtitle-text-color), var(--v-theme-light-border-opacity)) !important;
   margin: 20px 15px;
   border-radius: 12px !important;
 }
@@ -260,4 +260,7 @@ button[type='submit'] {
   letter-spacing: normal !important;
   font-family: inherit;
   text-transform: none !important;
+}
+.form-text-subtitle {
+  color: rgba(var(--v-theme-subtitle-text-color), var(--v-disabled-opacity)) !important;
 }

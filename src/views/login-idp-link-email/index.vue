@@ -7,15 +7,15 @@
       <h2 class="text-secondary form-header-title">
         {{ titles.emailLinkIdpTitle }}
       </h2>
-      <p class="text-disabled font-weight-regular">
+      <p class="form-text-subtitle font-weight-regular">
         {{ instruction.emailLinkIdp1 }}
       </p>
-      <p class="text-disabled font-weight-regular">
+      <p class="form-text-subtitle font-weight-regular">
         {{ instruction.emailLinkIdp2 }}
         <a :href="getUrl(urls.loginAction)">{{ labels.doClickHere }}</a>
         {{ instruction.emailLinkIdp3 }}
       </p>
-      <p class="text-disabled font-weight-regular">
+      <p class="form-text-subtitle font-weight-regular">
         {{ instruction.emailLinkIdp4 }}
         <a :href="getUrl(urls.loginAction)">{{ labels.doClickHere }}</a>
         {{ instruction.emailLinkIdp5 }}

@@ -7,7 +7,7 @@
       <h2 class="text-secondary form-header-title">
         {{ titles.logoutConfirmTitle }}
       </h2>
-      <h4 class="text-disabled form-header-subtitle font-weight-regular">
+      <h4 class="form-text-subtitle form-header-subtitle font-weight-regular">
         {{ labels.logoutConfirmHeader}}
       </h4>
     </v-container>
@@ -27,6 +27,7 @@
         size="large"
         type="submit"
         name="confirmLogout"
+        :value="labels.doLogout"
         id="kc-logout"
       >
         {{ labels.doLogout }}</v-btn

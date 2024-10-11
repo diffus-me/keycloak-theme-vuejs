@@ -18,6 +18,7 @@ export type ThemeTypes = {
     darkprimary?: string;
     darksecondary?: string;
     darkText?: string;
+    'subtitle-text-color'?: string;
     lightText?: string;
     borderLight?: string;
     inputBorder?: string;
@@ -31,5 +32,9 @@ export type ThemeTypes = {
     gray100?: string;
     primary200?: string;
     secondary200?: string;
+    'light-border-opacity'?: number;
+    'carousel-dot-color'?: string;
+    'carousel-title-color'?: string;
+    'carousel-subtitle-color'?: string;
   };
 };

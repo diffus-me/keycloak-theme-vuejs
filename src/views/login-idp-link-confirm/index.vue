@@ -7,7 +7,7 @@
       <h2 class="text-secondary form-header-title">
         {{ titles.confirmLinkIdpTitle }}
       </h2>
-      <h4 class="text-disabled form-header-subtitle font-weight-regular">
+      <h4 class="form-text-subtitle form-header-subtitle font-weight-regular">
         Please check your email inbox for further instructions.
       </h4>
     </v-container>
