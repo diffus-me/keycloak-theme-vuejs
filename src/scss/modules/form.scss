@@ -264,3 +264,7 @@ button[type='submit'] {
 .form-text-subtitle {
   color: rgba(var(--v-theme-subtitle-text-color), var(--v-disabled-opacity)) !important;
 }
+.main-logo-image {
+  height: var(--v-logo-image-size) !important;
+  max-height: var(--v-logo-image-size) !important;
+}

@@ -1,8 +1,19 @@
 import type { ThemeTypes } from '~/types/themeTypes/ThemeType'
+import { useConfig } from '~/hooks';
+
+const { backgroundImages, mainLogoSize } = useConfig()
+const randomIndex = Math.floor(Math.random() * backgroundImages.length)
+const backgroundImage = backgroundImages[randomIndex]
 
 const DarkOrangeTheme: ThemeTypes = {
   name: 'DarkOrangeTheme',
   dark: true,
+  variables: {
+    'high-opacity': 1,
+    'light-opacity': 0.12,
+    'logo-image-size': `${mainLogoSize}px`,
+    'background-image-main': `url("${backgroundImage}")`,
+  },
   colors: {
     primary: '#04adbf',
     secondary: '#fa5a0c',
@@ -40,7 +51,9 @@ const DarkPurpleTheme: ThemeTypes = {
   dark: true,
   variables: {
     'high-opacity': 1,
-    'light-opacity': 0.12
+    'light-opacity': 0.12,
+    'logo-image-size': `${mainLogoSize}px`,
+    'background-image-main': `url("${backgroundImage}")`,
   },
   colors: {
     primary: '#cccccc',
@@ -83,7 +96,9 @@ const DarkWhiteTheme: ThemeTypes = {
   dark: true,
   variables: {
     'high-opacity': 1,
-    'light-opacity': 0.12
+    'light-opacity': 0.12,
+    'logo-image-size': `${mainLogoSize}px`,
+    'background-image-main': `url("${backgroundImage}")`,
   },
   colors: {
     primary: '#4353ff',

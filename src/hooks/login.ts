@@ -95,5 +95,9 @@ export const useConfig = () => {
     showFirstName: true,
     lastNameRequired: true,
     showLastName: true,
+    backgroundImages: [
+      'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/background/login/trackingly_login_background.jpg',
+    ],
+    mainLogoSize: 36,
   }
 }

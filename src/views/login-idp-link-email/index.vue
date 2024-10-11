@@ -2,7 +2,7 @@
   <layout>
     <v-container class="form-header-container pa-0">
       <div class="form-header-logo">
-        <v-img height="36" :src="getLogo('main-logo')"></v-img>
+        <v-img class="main-logo-image" :src="getLogo('main-logo')"></v-img>
       </div>
       <h2 class="text-secondary form-header-title">
         {{ titles.emailLinkIdpTitle }}

@@ -67,7 +67,6 @@ export default defineComponent({
 })
 </script>
 <style lang="scss">
-@import '~/src/scss/base/variables';
 .loginBox {
   max-width: 475px;
   margin: 0 auto;
@@ -79,7 +78,7 @@ export default defineComponent({
   border-width: 0 !important;
 }
 .bgpattern {
-  background: $main-background;
+  background: var(--v-background-image-main);
   background-size: cover;
 }
 .ps {
