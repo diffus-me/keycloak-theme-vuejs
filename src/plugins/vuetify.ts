@@ -2,9 +2,8 @@ import { createVuetify } from 'vuetify';
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
-import { OrangeTheme } from '~/theme/LightTheme';
 import {
-  DarkOrangeTheme,
+  DarkWhiteTheme,
 } from '~/theme/DarkTheme';
 import 'vuetify/styles';
 
@@ -21,10 +20,9 @@ export default createVuetify({
     }
   },
   theme: {
-    defaultTheme: 'OrangeTheme',
+    defaultTheme: 'DarkWhiteTheme',
     themes: {
-      OrangeTheme,
-      DarkOrangeTheme,
+      DarkWhiteTheme,
     }
   },
   defaults: {

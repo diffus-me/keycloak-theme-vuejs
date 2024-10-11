@@ -6,7 +6,7 @@ export const useLogin = () => {
 
   const getUrl = (url: string) => {
     if (url === "terms_and_conditions") {
-      return "https://www.trackingly.ai/terms/";
+      return "https://www.diffus.me/terms/";
     }
     return url.replace(/(&amp;)/g, '&')
   }
@@ -44,7 +44,7 @@ export const useLogin = () => {
 
   const getLogo = (type: string | undefined) => {
     if (type === 'main-logo') {
-      return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/logos/trackingly_logo_pth.svg';
+      return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/diffus/assets/images/logos/diffus-logo.png';
     }
     return '';
   }
@@ -76,19 +76,19 @@ export const useConfig = () => {
   return {
     slides: [
       {
-        title: 'A suite of powerful tools to grow your business',
+        title: 'Composition',
         description:
-          'From tracking to reporting, we have everything you need to manage your business'
+          'Effortlessly apply distinct prompts to various sections of your image, enabling you to achieve the perfect composition.'
       },
       {
-        title: 'Automate growth with AI',
+        title: 'Lighting & Color',
         description:
-          'State of the art AI models to make sure you are ahead of the competition'
+          'Adapt your preferred color scheme with a simple click, transforming your image instantly.'
       },
       {
-        title: 'Beautiful and easy to use',
+        title: 'Subject & Style',
         description:
-          'Our tools are designed to be easy to use and beautiful to look at'
+          'Leverage our library of more than 50,000 Checkpoints and LORAS and popular community extensions to refine your style.'
       }
     ] as slideType[],
     firstNameRequired: true,
@@ -96,8 +96,8 @@ export const useConfig = () => {
     lastNameRequired: true,
     showLastName: true,
     backgroundImages: [
-      'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/trackingly/assets/images/background/login/trackingly_login_background.jpg',
+      'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/diffus/assets/images/background/diffus-background-1.webp',
     ],
-    mainLogoSize: 36,
+    mainLogoSize: 60,
   }
 }
