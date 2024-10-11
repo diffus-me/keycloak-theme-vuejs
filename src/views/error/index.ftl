@@ -4,7 +4,8 @@
     <script id="environment" type="application/json">
       {
         "urls": {
-          "clientBaseUrl":  <#if !logoutConfirm.skipLink && (client.baseUrl)?has_content>"${client.baseUrl}"<#else>""</#if>
+          "clientBaseUrl":  <#if client?? && client.baseUrl?has_content>"${client.baseUrl}"<#else>""</#if>,
+          "loginRestartFlowUrl": "${url.loginRestartFlowUrl}"
         },
         "titles": {
           "errorTitle": "${kcSanitize(msg("errorTitle"))?no_esc}"
@@ -12,6 +13,7 @@
         "permissions": {
         },
         "labels": {
+          "backToLogin": "${kcSanitize(msg("backToLogin"))?no_esc}",
           "backToApplication": "${kcSanitize(msg("backToApplication"))?no_esc}"
         },
         "forms": {

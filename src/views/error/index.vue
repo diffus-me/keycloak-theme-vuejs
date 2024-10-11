@@ -11,13 +11,21 @@
         {{ message.sumary }}
       </h4>
     </v-container>
-    <div v-if="urls.clientBaseUrl" class="mt-5 text-right">
+    <div class="mt-5 text-right">
       <v-divider />
       <v-btn
+        v-if="urls.clientBaseUrl"
         variant="plain"
         class="mt-2 text-capitalize mr-n2"
         @click="redirectTo(getUrl(urls.clientBaseUrl))"
         >{{ labels.backToApplication }}</v-btn
+      >
+      <v-btn
+        v-else
+        variant="plain"
+        class="mt-2 text-capitalize mr-n2"
+        @click="redirectTo(getUrl(urls.loginRestartFlowUrl))"
+        >{{ labels.backToLogin }}</v-btn
       >
     </div>
   </layout>
