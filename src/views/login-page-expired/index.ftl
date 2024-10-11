@@ -1,18 +1,19 @@
 <#import "template_minimal.ftl" as layout>
-<@layout.registrationLayout displayMessage=false; section>
+<@layout.registrationLayout; section>
   <#if section = "scripts">
     <script id="environment" type="application/json">
       {
         "urls": {
-          "clientBaseUrl":  <#if !logoutConfirm.skipLink && (client.baseUrl)?has_content>"${client.baseUrl}"<#else>""</#if>
+          "loginRestartFlowUrl": "${url.loginRestartFlowUrl}",
+          "loginAction": "${url.loginAction}"
         },
         "titles": {
-          "errorTitle": "${kcSanitize(msg("errorTitle"))?no_esc}"
+          "pageExpiredTitle": "${msg("pageExpiredTitle")}"
         },
         "permissions": {
         },
         "labels": {
-          "backToApplication": "${kcSanitize(msg("backToApplication"))?no_esc}"
+          "doClickHere": "${msg("doClickHere")}"
         },
         "forms": {
         },
@@ -21,15 +22,16 @@
         "validations": {
         },
         "message": {
-          "sumary": "${kcSanitize(message.summary)?no_esc}"
         },
         "instruction": {
+          "pageExpiredMsg1": "${msg("pageExpiredMsg1")}",
+          "pageExpiredMsg2": "${msg("pageExpiredMsg2")}"
         },
         "social": [
         ],
         "actions": []
       }
     </script>
-    <script type="module" src="${url.resourcesPath}/js/error.js"></script>
+    <script type="module" src="${url.resourcesPath}/js/login-page-expired.js"></script>
   </#if>
 </@layout.registrationLayout>

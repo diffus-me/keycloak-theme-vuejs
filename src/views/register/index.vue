@@ -56,7 +56,11 @@
       v-slot="{ isSubmitting }"
     >
       <v-row v-if="firstNameRequired || lastNameRequired">
-        <v-col v-if="firstNameRequired" cols="12" :sm="lastNameRequired? 6: 12">
+        <v-col
+          v-if="firstNameRequired || showFirstName"
+          cols="12"
+          :sm="lastNameRequired ? 6 : 12"
+        >
           <text-input
             name="firstName"
             type="text"
@@ -65,7 +69,11 @@
           >
           </text-input>
         </v-col>
-        <v-col v-if="lastNameRequired" cols="12" :sm="firstNameRequired? 6: 12">
+        <v-col
+          v-if="lastNameRequired || showLastName"
+          cols="12"
+          :sm="firstNameRequired ? 6 : 12"
+        >
           <text-input
             name="lastName"
             type="text"
@@ -202,7 +210,8 @@ export default defineComponent({
     const redirectTo = (url: string) => {
       window.location.href = url
     }
-    const { firstNameRequired, lastNameRequired } = useConfig();
+    const { firstNameRequired, showFirstName, lastNameRequired, showLastName } =
+      useConfig()
     const baseSchema = {
       firstName: Yup.string().notRequired(),
       lastName: Yup.string().notRequired(),
@@ -227,10 +236,14 @@ export default defineComponent({
       baseSchema.username = Yup.string().min(5).required()
     }
     if (firstNameRequired) {
-      baseSchema.firstName = Yup.string().min(1).required("First name can't be empty");
+      baseSchema.firstName = Yup.string()
+        .min(1)
+        .required("First name can't be empty")
     }
     if (lastNameRequired) {
-      baseSchema.lastName = Yup.string().min(1).required("Last name can't be empty");
+      baseSchema.lastName = Yup.string()
+        .min(1)
+        .required("Last name can't be empty")
     }
     const fieldErrors = extractFieldsErros(defaultValues.validations.value)
     return {
@@ -240,6 +253,8 @@ export default defineComponent({
       fieldErrors: fieldErrors,
       firstNameRequired: firstNameRequired,
       lastNameRequired: lastNameRequired,
+      showFirstName: showFirstName,
+      showLastName: showLastName,
       redirectTo
     }
   },

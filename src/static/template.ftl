@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="robots" content="noindex, nofollow">
     <title>${msg("loginTitle",(realm.displayName!''))}</title>
+    <link rel="icon" type="image/png" href="${url.resourcesPath}/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -21,7 +22,7 @@
         "loginResetCredentials": "${url.loginResetCredentialsUrl}",
         "login": "${url.loginUrl}",
         "registration": "${url.registrationUrl}",
-        "loginAction": <#if logoutConfirm??>""<#else>"${url.loginAction}"</#if>,
+        "loginAction": <#if logoutConfirm?? || !auth?has_content>""<#else>"${url.loginAction}"</#if>,
         "registrationAction": "${url.registrationAction}",
         "logoutConfirmAction": "${url.logoutConfirmAction}",
         "clientBaseUrl":  <#if logoutConfirm??><#if logoutConfirm.skipLink>""<#else><#if (client.baseUrl)?has_content>"${client.baseUrl}"<#else>""</#if></#if><#else>""</#if>,
@@ -36,7 +37,7 @@
         "emailLinkIdpTitle": "${msg("emailLinkIdpTitle", idpDisplayName)}",
         "emailVerifyTitle": "${msg("emailVerifyTitle")}",
         "logoutConfirmTitle": "${msg("logoutConfirmTitle")}",
-        "errorTitle": "${kcSanitize(msg("errorTitle"))?no_esc}"
+        "updatePasswordTitle": "${msg("updatePasswordTitle")}"
       },
       "permissions": {
         "usernameEditDisabled": <#if usernameEditDisabled??>true<#else>false</#if>,
@@ -44,7 +45,7 @@
         "registrationEmailAsUsername": <#if realm.registrationEmailAsUsername>true<#else>false</#if>,
         "rememberMe": <#if realm.rememberMe>true<#else>false</#if>,
         "resetPasswordAllowed": <#if realm.resetPasswordAllowed>true<#else>false</#if>,
-        "password": <#if realm.password>true<#else>false</#if>,
+        "password": <#if realm?? && realm.password?? && realm.password>true<#else>false</#if>,
         "registrationAllowed": <#if realm.registrationAllowed>true<#else>false</#if>,
         "registrationDisabled": <#if registrationDisabled??>true<#else>false</#if>,
         "passwordRequired": <#if passwordRequired??>true<#else>false</#if>
@@ -57,6 +58,7 @@
         "email": "${msg("email")}",
         "password": "${msg("password")}",
         "passwordConfirm": "${msg("passwordConfirm")}",
+        "passwordNew": "${msg("passwordNew")}",
         "rememberMe": "${msg("rememberMe")}",
         "doForgotPassword": "${msg("doForgotPassword")}",
         "doLogIn": "${msg("doLogIn")}",
@@ -114,7 +116,8 @@
             }<#sep>, </#sep>
           </#list>
         </#if>
-      ]
+      ],
+      "actions": []
     }
   </script>
   <#nested "scripts">

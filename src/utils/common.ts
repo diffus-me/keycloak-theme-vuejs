@@ -12,6 +12,7 @@ export const extractFieldsErros = (
           field: key,
           message: validations[key]
         })
+        messages.push(validations[key])
       }
     }
   }

@@ -92,6 +92,8 @@ export const useConfig = () => {
       }
     ] as slideType[],
     firstNameRequired: true,
+    showFirstName: true,
     lastNameRequired: true,
+    showLastName: true,
   }
 }

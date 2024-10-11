@@ -14,7 +14,11 @@ const entries = [
   'login-idp-link-confirm',
   'login-idp-link-email',
   'login-verify-email',
-  'logout-confirm'
+  'logout-confirm',
+  'error',
+  'info',
+  'login-page-expired',
+  'login-update-password'
 ]
 
 module.exports = (env, argv) => {

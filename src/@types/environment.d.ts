@@ -19,6 +19,9 @@ interface EnvTitle {
   emailVerifyTitle: string
   logoutConfirmTitle: string
   errorTitle: string
+  messageHeader: string
+  updatePasswordTitle: string
+  pageExpiredTitle: string
 }
 
 interface EnvPermission {
@@ -41,6 +44,7 @@ interface EnvLabel {
   email: string
   password: string
   passwordConfirm: string
+  passwordNew: string
   rememberMe: string
   doForgotPassword: string
   doLogIn: string
@@ -97,6 +101,8 @@ interface EnvInstruction {
   emailVerifyInstruction1: string
   emailVerifyInstruction2: string
   emailVerifyInstruction3: string
+  pageExpiredMsg1: string
+  pageExpiredMsg2: string
 }
 
 interface EnvSocial {
@@ -116,4 +122,5 @@ interface Environment {
   message: EnvMessage
   social: EnvSocial[]
   instruction: EnvInstruction
+  actions: string[]
 }
