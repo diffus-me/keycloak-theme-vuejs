@@ -18,6 +18,7 @@
       v-slot="{ isSubmitting }"
     >
       <input type="hidden" name="session_code" :value="forms.logoutConfirmCode" style="display: none"/>
+      <input type="hidden" name="confirmLogout" :value="labels.doLogout" style="display: none"/>
       <v-btn
         color="secondary"
         :loading="isSubmitting"
@@ -27,7 +28,6 @@
         size="large"
         type="submit"
         name="confirmLogout"
-        :value="labels.doLogout"
         id="kc-logout"
       >
         {{ labels.doLogout }}</v-btn

@@ -87,7 +87,7 @@ const DarkWhiteTheme: ThemeTypes = {
   },
   colors: {
     primary: '#4353ff',
-    secondary: '#cccccc',
+    secondary: '#ffffff',
     surface: '#121212',
     background: '#000000',
     'subtitle-text-color': '#ffffff',
