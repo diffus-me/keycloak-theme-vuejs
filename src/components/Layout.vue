@@ -1,4 +1,5 @@
 <template>
+  <link rel="preload" :href="backgroundImage" as="image"/>
   <v-row class="h-screen" no-gutters>
     <!---Left Part-->
     <v-col
@@ -55,6 +56,7 @@ import { defineComponent } from 'vue'
 import TextSlider from './TextSlider.vue'
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 import 'vue3-perfect-scrollbar/style.css'
+import { backgroundImage } from '~/plugins/vuetify'
 
 export default defineComponent({
   name: 'Layout',
@@ -62,7 +64,11 @@ export default defineComponent({
     TextSlider,
     PerfectScrollbar
   },
-  setup() {}
+  setup() {
+    return {
+      backgroundImage: backgroundImage
+    }
+  }
 })
 </script>
 <style lang="scss">

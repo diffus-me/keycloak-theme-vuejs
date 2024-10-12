@@ -51,4 +51,4 @@ const OrangeTheme: ThemeTypes = {
   }
 }
 
-export { OrangeTheme }
+export { OrangeTheme, backgroundImage }

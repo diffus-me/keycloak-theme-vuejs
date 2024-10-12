@@ -1,11 +1,9 @@
-import { createVuetify } from 'vuetify';
-import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
-import * as components from 'vuetify/components';
-import * as directives from 'vuetify/directives';
-import {
-  DarkWhiteTheme,
-} from '~/theme/DarkTheme';
-import 'vuetify/styles';
+import { createVuetify } from 'vuetify'
+import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+import { DarkWhiteTheme, backgroundImage } from '~/theme/DarkTheme'
+import 'vuetify/styles'
 
 export default createVuetify({
   components,
@@ -13,7 +11,7 @@ export default createVuetify({
   icons: {
     defaultSet: 'mdi',
     aliases: {
-      ...aliases,
+      ...aliases
     },
     sets: {
       mdi
@@ -22,7 +20,7 @@ export default createVuetify({
   theme: {
     defaultTheme: 'DarkWhiteTheme',
     themes: {
-      DarkWhiteTheme,
+      DarkWhiteTheme
     }
   },
   defaults: {
@@ -38,4 +36,6 @@ export default createVuetify({
       location: 'top'
     }
   }
-});
+})
+
+export { backgroundImage }
