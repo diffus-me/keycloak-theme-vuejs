@@ -55,7 +55,7 @@
       class="mt-7 signup-form"
       v-slot="{ isSubmitting }"
     >
-      <v-row v-if="firstNameRequired || lastNameRequired">
+      <v-row v-if="firstNameRequired || lastNameRequired || showFirstName || showLastName">
         <v-col
           v-if="firstNameRequired || showFirstName"
           cols="12"
