@@ -1,3 +1,6 @@
 html {
   overflow-y: auto !important;
 }
+body {
+  background: rgb(var(--v-theme-background));
+}
