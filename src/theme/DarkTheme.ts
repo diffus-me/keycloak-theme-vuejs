@@ -136,4 +136,4 @@ const DarkWhiteTheme: ThemeTypes = {
   }
 }
 
-export { DarkOrangeTheme, DarkPurpleTheme, DarkWhiteTheme }
+export { DarkOrangeTheme, DarkPurpleTheme, DarkWhiteTheme, backgroundImage }
