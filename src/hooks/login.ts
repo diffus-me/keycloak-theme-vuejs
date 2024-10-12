@@ -1,12 +1,12 @@
 import { inject, computed } from 'vue'
-import { slideType } from '~/types/common';
+import { slideType } from '~/types/common'
 
 export const useLogin = () => {
   const env = inject('environment') as Environment
 
   const getUrl = (url: string) => {
-    if (url === "terms_and_conditions") {
-      return "https://www.diffus.me/terms/";
+    if (url === 'terms_and_conditions') {
+      return 'https://www.diffus.me/terms/'
     }
     return url.replace(/(&amp;)/g, '&')
   }
@@ -44,9 +44,9 @@ export const useLogin = () => {
 
   const getLogo = (type: string | undefined) => {
     if (type === 'main-logo') {
-      return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/diffus/assets/images/logos/diffus-logo.png';
+      return 'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/diffus/assets/images/logos/diffus-logo.png'
     }
-    return '';
+    return ''
   }
 
   const getSumary = (message: string) => {
@@ -91,13 +91,13 @@ export const useConfig = () => {
           'Leverage our library of more than 50,000 Checkpoints and LORAS and popular community extensions to refine your style.'
       }
     ] as slideType[],
-    firstNameRequired: true,
+    firstNameRequired: false,
     showFirstName: true,
-    lastNameRequired: true,
+    lastNameRequired: false,
     showLastName: true,
     backgroundImages: [
-      'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/diffus/assets/images/background/diffus-background-1.webp',
+      'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/diffus/assets/images/background/diffus-back-ground-896x975.webp'
     ],
-    mainLogoSize: 60,
+    mainLogoSize: 80
   }
 }
