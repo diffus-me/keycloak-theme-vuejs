@@ -59,7 +59,7 @@
         <v-col
           v-if="firstNameRequired || showFirstName"
           cols="12"
-          :sm="lastNameRequired ? 6 : 12"
+          :sm="lastNameRequired || showLastName ? 6 : 12"
         >
           <text-input
             name="firstName"
@@ -72,7 +72,7 @@
         <v-col
           v-if="lastNameRequired || showLastName"
           cols="12"
-          :sm="firstNameRequired ? 6 : 12"
+          :sm="firstNameRequired || showFirstName ? 6 : 12"
         >
           <text-input
             name="lastName"
