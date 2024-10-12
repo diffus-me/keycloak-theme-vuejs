@@ -16,7 +16,6 @@
                 <v-card elevation="0" class="loginBox">
                   <v-card variant="outlined" class="formBox">
                     <v-card-text class="pa-9">
-
                       <!---Left Part Form-->
                       <slot></slot>
                       <!---Left Part Form-->
@@ -55,7 +54,7 @@
 import { defineComponent } from 'vue'
 import TextSlider from './TextSlider.vue'
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
-import 'vue3-perfect-scrollbar/style.css';
+import 'vue3-perfect-scrollbar/style.css'
 
 export default defineComponent({
   name: 'Layout',
@@ -80,6 +79,7 @@ export default defineComponent({
 .bgpattern {
   background: var(--v-background-image-main);
   background-size: cover;
+  background-position: center;
 }
 .ps {
   width: 100%;
