@@ -96,7 +96,9 @@ export const useConfig = () => {
     lastNameRequired: false,
     showLastName: true,
     backgroundImages: [
-      'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/diffus/assets/images/background/diffus-back-ground-896x975.webp'
+      'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/diffus/assets/images/background/diffus-back-ground-896x975.webp',
+      'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/diffus/assets/images/background/diffus-back-ground-2-1000x900.webp',
+      'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/diffus/assets/images/background/diffus-back-ground-3-1000x900.webp'
     ],
     mainLogoSize: 80
   }

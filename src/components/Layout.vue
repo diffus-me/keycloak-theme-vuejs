@@ -77,7 +77,7 @@ export default defineComponent({
   border-width: 0 !important;
 }
 .bgpattern {
-  background: var(--v-background-image-main);
+  background-image: linear-gradient(to right, rgba(var(--v-theme-background), 1), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), var(--v-background-image-main);
   background-size: cover;
   background-position: center;
 }
