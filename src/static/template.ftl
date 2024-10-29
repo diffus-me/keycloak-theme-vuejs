@@ -116,7 +116,7 @@
         "sumary": <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>"${kcSanitize(message.summary)?no_esc}"<#else>""</#if>
       },
       "instruction": {
-        "emailVerifyInstruction1": "${msg("emailVerifyInstruction1", user.email!'')}",
+        "emailVerifyInstruction1": <#if user??>"${msg("emailVerifyInstruction1", user.email!'')}"<#else>"${msg("emailVerifyInstruction1", '')}"</#if>,
         "emailVerifyInstruction2": "${msg("emailVerifyInstruction2")}",
         "emailVerifyInstruction3": "${msg("emailVerifyInstruction3")}"
       },
