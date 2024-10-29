@@ -101,7 +101,6 @@ export const useConfig = () => {
       'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/diffus/assets/images/background/diffus-back-ground-4-1000x1000.webp',
       'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/diffus/assets/images/background/diffus-back-ground-5-1000x1000.webp',
       'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/diffus/assets/images/background/diffus-back-ground-6-1000x1000.webp',
-      'https://diffus-public-static-assets.s3.amazonaws.com/keycloak/diffus/assets/images/background/diffus-back-ground-7-1000x1000.webp',
     ],
     mainLogoSize: 80
   }
