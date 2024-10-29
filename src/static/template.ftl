@@ -29,15 +29,26 @@
         "loginRestartFlowUrl": "${url.loginRestartFlowUrl}"
       },
       "titles": {
+        "loginWelcomeTitle": "${msg("loginWelcomeTitle")}",
+        "loginWelcomeSubtitle": "${msg("loginWelcomeSubtitle")}",
         "loginProfileTitle": "${msg("loginProfileTitle")}",
+        "loginProfileSubtitle": "${msg("loginProfileSubtitle")}",
         "loginAccountTitle": "${msg("loginAccountTitle")}",
+        "emailLoginSubtitle": "${msg("emailLoginSubtitle")}",
+        "emailSignupSubtitle": "${msg("emailSignupSubtitle")}",
+        "emailForgotSubtitle": "${msg("emailForgotSubtitle")}",
+        "socialDivider": "${msg("socialDivider")}",
         "registerTitle": "${msg("registerTitle")}",
+        "signupSubtitle": "${msg("signupSubtitle")}",
         "emailForgotTitle": "${msg("emailForgotTitle")}",
         "confirmLinkIdpTitle": "${msg("confirmLinkIdpTitle")}",
         "emailLinkIdpTitle": "${msg("emailLinkIdpTitle", idpDisplayName)}",
         "emailVerifyTitle": "${msg("emailVerifyTitle")}",
+        "pageExpiredSubtitle": "${msg("pageExpiredSubtitle")}",
+        "confirmLinkIdpSubtitle": "${msg("confirmLinkIdpSubtitle")}",
         "logoutConfirmTitle": "${msg("logoutConfirmTitle")}",
-        "updatePasswordTitle": "${msg("updatePasswordTitle")}"
+        "updatePasswordTitle": "${msg("updatePasswordTitle")}",
+        "updatePasswordSubtitle": "${msg("updatePasswordSubtitle")}"
       },
       "permissions": {
         "usernameEditDisabled": <#if usernameEditDisabled??>true<#else>false</#if>,
@@ -60,6 +71,8 @@
         "passwordConfirm": "${msg("passwordConfirm")}",
         "passwordNew": "${msg("passwordNew")}",
         "rememberMe": "${msg("rememberMe")}",
+        "notTerms": "${msg("notTerms")}",
+        "termsTitle": "${msg("termsTitle")}",
         "doForgotPassword": "${msg("doForgotPassword")}",
         "doLogIn": "${msg("doLogIn")}",
         "doSubmit": "${msg("doSubmit")}",
@@ -69,6 +82,7 @@
         "confirmLinkIdpContinue": "${msg("confirmLinkIdpContinue")}",
         "doClickHere": "${msg("doClickHere")}",
         "doLogout": "${msg("doLogout")}",
+        "logoutOtherSessions": "${msg("logoutOtherSessions")}",
         "logoutConfirmHeader": "${msg("logoutConfirmHeader")}",
         "backToApplication": "${kcSanitize(msg("backToApplication"))?no_esc}"
       },
@@ -102,17 +116,19 @@
         "sumary": <#if displayMessage && message?has_content && (message.type != 'warning' || !isAppInitiatedAction??)>"${kcSanitize(message.summary)?no_esc}"<#else>""</#if>
       },
       "instruction": {
-        "emailVerifyInstruction1": "${msg("emailVerifyInstruction1")}",
+        "emailVerifyInstruction1": "${msg("emailVerifyInstruction1", user.email!'')}",
         "emailVerifyInstruction2": "${msg("emailVerifyInstruction2")}",
         "emailVerifyInstruction3": "${msg("emailVerifyInstruction3")}"
       },
       "social": [
         <#if realm.password && social.providers??>
           <#list social.providers as p>
-            { 
+            {
               "alias": "${p.alias}",
               "displayName": "${p.displayName!}",
-              "loginUrl": "${p.loginUrl}"
+              "loginUrl": "${p.loginUrl}",
+              "loginMsg": "${msg("socialLogin", p.displayName!'')}",
+              "signupMsg": "${msg("socialSignup", p.displayName!'')}"
             }<#sep>, </#sep>
           </#list>
         </#if>

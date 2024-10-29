@@ -8,7 +8,7 @@
         {{ titles.pageExpiredTitle }}
       </h2>
       <h4 class="form-text-subtitle form-header-subtitle font-weight-regular">
-        Your session has expired. Please decide what you would like to do next
+        {{ titles.pageExpiredSubtitle }}
       </h4>
     </v-container>
     <v-row class="mt-7">

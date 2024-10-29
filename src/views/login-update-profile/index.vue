@@ -8,7 +8,7 @@
         {{ titles.loginProfileTitle }}
       </h2>
       <h4 v-if="false" class="form-text-subtitle form-header-subtitle">
-        Please fill out your updated profile information.
+        {{ titles.loginProfileSubtitle }}
       </h4>
     </v-container>
     <Form

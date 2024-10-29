@@ -8,7 +8,7 @@
         {{ titles.confirmLinkIdpTitle }}
       </h2>
       <h4 class="form-text-subtitle form-header-subtitle font-weight-regular">
-        Please check your email inbox for further instructions.
+        {{ titles.confirmLinkIdpSubtitle }}
       </h4>
     </v-container>
     <Form

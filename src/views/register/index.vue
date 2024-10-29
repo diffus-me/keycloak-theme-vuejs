@@ -8,7 +8,7 @@
         {{ titles.registerTitle }}
       </h2>
       <h4 class="form-text-subtitle form-header-subtitle">
-        Enter your email address to create an account
+        {{ titles.signupSubtitle }}
       </h4>
     </v-container>
     <v-container v-if="social.length" class="ma-0 px-0 pt-5 pb-5">
@@ -26,9 +26,7 @@
           :alt="item.displayName"
           style="height: 22px; width: 22px"
         />
-        <span class="ml-2 text-none"
-          >Sign up with {{ item.displayName }}</span
-        ></v-btn
+        <span class="ml-2 text-none">{{ item.signupMsg }}</span></v-btn
       >
     </v-container>
     <v-row v-if="social.length">
@@ -40,13 +38,13 @@
           rounded="md"
           size="small"
           readonly
-          >OR</v-btn
+          >{{ titles.socialDivider }}</v-btn
         >
         <v-divider class="custom-devider" />
       </v-col>
     </v-row>
     <h5 v-if="social.length" class="form-sign-title-hint text-center my-4 mb-8">
-      Sign up with email address
+      {{ titles.emailSignupSubtitle }}
     </h5>
     <Form
       :validation-schema="schema"
@@ -55,7 +53,11 @@
       class="mt-7 signup-form"
       v-slot="{ isSubmitting }"
     >
-      <v-row v-if="firstNameRequired || lastNameRequired || showFirstName || showLastName">
+      <v-row
+        v-if="
+          firstNameRequired || lastNameRequired || showFirstName || showLastName
+        "
+      >
         <v-col
           v-if="firstNameRequired || showFirstName"
           cols="12"
@@ -131,15 +133,15 @@
       >
         <checkbox
           name="terms_and_conditions"
-          label="Agree with?"
+          :label="labels.notTerms"
           color="primary"
           class="ms-n2"
           :value="false"
         >
         </checkbox>
-        <a :href="getUrl('terms_and_conditions')" class="ml-1 text-lightText"
-          >Terms and Condition</a
-        >
+        <a :href="getUrl('terms_and_conditions')" class="ml-1 text-lightText">{{
+          labels.termsTitle
+        }}</a>
       </div>
       <v-btn
         color="secondary"

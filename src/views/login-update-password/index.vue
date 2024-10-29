@@ -8,7 +8,7 @@
         {{ titles.updatePasswordTitle }}
       </h2>
       <h4 class="form-text-subtitle form-header-subtitle">
-        Enter your new password below
+        {{ titles.updatePasswordSubtitle }}
       </h4>
     </v-container>
     <Form
@@ -50,7 +50,7 @@
         <v-checkbox
           v-model="signoutOtherSession"
           name="logout-sessions"
-          label="Sign out from other devices?"
+          :label="labels.logoutOtherSessions"
           color="primary"
           class="ms-n2"
           hide-details
@@ -108,7 +108,7 @@ export default defineComponent({
   components: {
     Layout,
     Form,
-    TextInput,
+    TextInput
   },
   setup() {
     const defaultValues = useLogin()
@@ -125,13 +125,13 @@ export default defineComponent({
         .required(),
       'password-confirm': Yup.string()
         .oneOf([Yup.ref('password-new'), ''], 'Passwords must match')
-        .required("Password confirmation can't be empty"),
+        .required("Password confirmation can't be empty")
     }
     const fieldErrors = extractFieldsErros(defaultValues.validations.value)
     return {
       ...defaultValues,
       schema: Yup.object().shape(baseSchema),
-      signoutOtherSession: ref("on"),
+      signoutOtherSession: ref('on'),
       fieldErrors: fieldErrors,
       redirectTo
     }

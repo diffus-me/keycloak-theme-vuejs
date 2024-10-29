@@ -8,7 +8,7 @@
         {{ titles.emailVerifyTitle }}
       </h2>
       <h4 class="form-text-subtitle form-header-subtitle font-weight-regular">
-        {{ instruction.emailVerifyInstruction1 }} {{ user.email }}.
+        {{ instruction.emailVerifyInstruction1 }}
       </h4>
     </v-container>
     <div class="mt-7">

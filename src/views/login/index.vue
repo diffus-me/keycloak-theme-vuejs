@@ -4,9 +4,9 @@
       <div class="form-header-logo">
         <v-img class="main-logo-image" :src="getLogo('main-logo')"></v-img>
       </div>
-      <h2 class="text-secondary form-header-title">Hi, Welcome Back</h2>
+      <h2 class="text-secondary form-header-title">{{ titles.loginWelcomeTitle }}</h2>
       <h4 class="form-text-subtitle form-header-subtitle">
-        Sign in to your account to continue
+        {{ titles.loginWelcomeSubtitle }}
       </h4>
     </v-container>
     <v-container v-if="social.length" class="ma-0 px-0 pt-5 pb-5">
@@ -23,7 +23,7 @@
           :alt="item.displayName"
           style="height: 22px; width: 22px"
         />
-        <span class="ml-2 text-none">Sign in with {{ item.displayName }}</span></v-btn
+        <span class="ml-2 text-none">{{ item.loginMsg }}</span></v-btn
       >
     </v-container>
     <v-row v-if="social.length">
@@ -35,13 +35,13 @@
           rounded="md"
           size="small"
           readonly
-          >OR</v-btn
+        >{{ titles.socialDivider }}</v-btn
         >
         <v-divider class="custom-devider" />
       </v-col>
     </v-row>
     <h5 v-if="social.length" class="form-sign-title-hint text-center my-4 mb-8">
-      Sign in with Email address
+      {{ titles.emailLoginSubtitle }}
     </h5>
     <Form
       :validation-schema="schema"
@@ -74,7 +74,7 @@
           v-if="permissions.rememberMe && !permissions.usernameEditDisabled"
           v-model="rememberMe"
           name="rememberMe"
-          label="Remember me?"
+          :label="labels.rememberMe"
           color="primary"
           class="ms-n2"
           hide-details
@@ -83,7 +83,7 @@
           <a
             :href="getUrl(urls.loginResetCredentials)"
             class="text-primary text-decoration-none"
-            >Forgot password?</a
+          >{{ labels.doForgotPassword }}</a
           >
         </div>
       </div>

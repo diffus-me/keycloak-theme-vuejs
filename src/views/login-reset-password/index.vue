@@ -8,8 +8,7 @@
         {{ titles.emailForgotTitle }}
       </h2>
       <h4 class="form-text-subtitle form-header-subtitle font-weight-regular">
-        Enter your email address below and we'll send you password reset
-        instructions.
+        {{ titles.emailForgotSubtitle }}
       </h4>
     </v-container>
     <Form
