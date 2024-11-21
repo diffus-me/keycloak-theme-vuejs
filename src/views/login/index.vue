@@ -138,6 +138,7 @@ import { ref } from 'vue'
 import { Form } from 'vee-validate'
 import * as Yup from 'yup'
 import { extractFieldsErros } from '~/utils/common'
+import { setLocalizationWithBrowserLanguage } from '~/utils/setLocalization'
 
 export default defineComponent({
   name: 'Login',
@@ -164,6 +165,8 @@ export default defineComponent({
       redirectTo
     }
   },
-  mounted() {}
+  mounted() {
+    setLocalizationWithBrowserLanguage();
+  }
 })
 </script>

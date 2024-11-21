@@ -43,6 +43,7 @@
     "webpack-cli": "^4.9.1"
   },
   "dependencies": {
+    "js-cookie": "^3.0.5",
     "vee-validate": "4.12.6",
     "vue": "^3.2.26",
     "vue3-perfect-scrollbar": "^2.0.0",
