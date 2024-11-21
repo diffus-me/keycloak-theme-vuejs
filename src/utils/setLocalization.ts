@@ -1,5 +1,13 @@
 import Cookies from 'js-cookie'
 
+function getRootDomain(domain: string): string {
+  const parts = domain.split('.').reverse()
+  if (parts.length >= 2) {
+    return `${parts[1]}.${parts[0]}`
+  }
+  return domain
+}
+
 export const setLocalizationWithBrowserLanguage = () => {
   const cookieLanguage = Cookies.get('localization')
   if (cookieLanguage && cookieLanguage.toLowerCase() !== 'none') {
@@ -35,8 +43,10 @@ export const setLocalizationWithBrowserLanguage = () => {
       break
     }
   }
+  const currentDomain = window.location.hostname
+  const rootDomain = getRootDomain(currentDomain)
   Cookies.set('localization', preferredLanguage, {
-    domain: 'diffus.me',
+    domain: rootDomain,
     path: '/',
     expires: 365
   })
