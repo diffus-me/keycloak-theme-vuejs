@@ -15,18 +15,20 @@ export const setLocalizationWithBrowserLanguage = () => {
   }
   const availableLanguages = [
     'en_US',
-    'de_DE',
-    'es_ES',
-    'fi_FI',
-    'it_IT',
     'ja_JP',
+    'de_DE',
+    'fr_FR',
+    'pl_PL',
+    'it_IT',
+    'es_ES',
     'ko_KR',
-    'no_NO',
+    'zh_TW',
     'pt_BR',
+    'fi_FI',
+    'no_NO',
     'ru_RU',
     'tr_TR',
     'zh_CN',
-    'zh_TW'
   ]
   const navigatorLanguages = navigator.languages.map(item => {
     return item.replaceAll('-', '_')
